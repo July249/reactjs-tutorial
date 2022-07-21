@@ -1,6 +1,11 @@
 const Header = () => {
+  const headerStyle = {
+    backgroundColor: 'royalblue',
+    color: '#fff',
+  };
+
   return (
-    <header>
+    <header style={headerStyle}>
       <h1>Groceries List</h1>
     </header>
   );
