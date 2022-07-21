@@ -21,9 +21,15 @@ npx create-react-app <folder name>
 
 ### What's you learned?
 
+- On App.js page, check what kinds of variables can display
+- Add "handleNameChange" function to figure out changes of app page
+
 ## 3. Functional Components
 
 ### What's you learned?
+
+- Import several components on App.js
+- Construct the App page, which is consisted of several components
 
 ## 4. Applying CSS Styles
 
