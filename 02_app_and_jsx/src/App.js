@@ -2,6 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const name = 'Jibro';
+
   return (
     <div className="App">
       <header className="App-header">
@@ -17,6 +19,16 @@ function App() {
         >
           Learn React
         </a>
+        {/* <p>{true === false}</p>
+        <p>{4 === 2}</p> */}
+        {/* Not render about the Boolean  */}
+
+        {/* <p>{{ a: 1, b: 2 }}</p> */}
+        {/* Error: Objects are not valid as a React child. If you meant to render a collection of children, use an array instead. */}
+
+        {/* <p>{[1, 2, 3]}</p>
+        <p>{name}</p>
+        <p>{'TEST'}</p> */}
       </header>
     </div>
   );
