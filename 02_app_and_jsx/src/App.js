@@ -2,23 +2,29 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  const name = 'Jibro';
+  /* const name = 'Jibro'; */
+  const handleNameChange = () => {
+    const names = ['Bob', 'Kevin', 'Carl', 'Jibro'];
+    const int = Math.floor(Math.random() * 4);
+    return names[int];
+  };
 
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Hello {handleNameChange()}!
+          {/* Edit <code>src/App.js</code> and save to reload. */}
         </p>
-        <a
+        {/* <a
           className="App-link"
           href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"
         >
           Learn React
-        </a>
+        </a> */}
         {/* <p>{true === false}</p>
         <p>{4 === 2}</p> */}
         {/* Not render about the Boolean  */}
