@@ -19,8 +19,8 @@ function App() {
         >
           Learn React
         </a>
-        <p>{true === false}</p>
-        <p>{4 === 2}</p>
+        {/* <p>{true === false}</p>
+        <p>{4 === 2}</p> */}
         {/* Not render about the Boolean  */}
 
         {/* <p>{{ a: 1, b: 2 }}</p> */}
