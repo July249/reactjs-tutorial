@@ -35,6 +35,10 @@ npx create-react-app <folder name>
 
 ### What's you learned?
 
+- Learn inline styling
+- Adjust index.css style, which is coppied by Dave Gray's file
+- NOTE: Mostly you have to make css file for each component. But, for small project, you can add all of styling line in index.css
+
 ## 5. Click Events
 
 ### What's you learned?
