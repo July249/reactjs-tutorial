@@ -43,6 +43,11 @@ npx create-react-app <folder name>
 
 ### What's you learned?
 
+- Just click on first button, then handleClick function add "You clicked it" on console.
+- Click on second button, then works anonymous function and operate handleClick2 function makes "{name} was clicked" on console which "name" is a parameter what you tossed.
+- REMARK: The anonymouse function works when you click the button!
+- Finally, click on third button, then the action on the page transfer DOM contents to "e"(event) parameter. And that parameter tossed handleClick3 function. After then, it prints "e.target.innerText" (in this case, "Click It") on console.
+
 ## 6. useState Hook
 
 ### What's you learned?
