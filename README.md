@@ -52,6 +52,11 @@ npx create-react-app <folder name>
 
 ### What's you learned?
 
+- Usage of useState
+- How to initialize variable in useState
+- Assign new variable setting in function
+- Adjust the functions to virtual DOM
+
 ## 7. Lists & Keys
 
 ### What's you learned?
