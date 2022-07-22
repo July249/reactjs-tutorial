@@ -12,28 +12,28 @@ npx create-react-app <folder name>
 
 ## 1. Start Here
 
-### What's you learned?
+### What you learned?
 
 - Initial setting by typing "npx create-react-app"
 - The basic structure of react app files, especially "app.js", "index.js"
 
 ## 2. App & JSX
 
-### What's you learned?
+### What you learned?
 
 - On App.js page, check what kinds of variables can display
 - Add "handleNameChange" function to figure out changes of app page
 
 ## 3. Functional Components
 
-### What's you learned?
+### What you learned?
 
 - Import several components on App.js
 - Construct the App page, which is consisted of several components
 
 ## 4. Applying CSS Styles
 
-### What's you learned?
+### What you learned?
 
 - Learn inline styling
 - Adjust index.css style, which is coppied by Dave Gray's file
@@ -41,7 +41,7 @@ npx create-react-app <folder name>
 
 ## 5. Click Events
 
-### What's you learned?
+### What you learned?
 
 - Just click on first button, then handleClick function add "You clicked it" on console.
 - Click on second button, then works anonymous function and operate handleClick2 function makes "{name} was clicked" on console which "name" is a parameter what you tossed.
@@ -50,7 +50,7 @@ npx create-react-app <folder name>
 
 ## 6. useState Hook
 
-### What's you learned?
+### What you learned?
 
 - Usage of useState
 - How to initialize variable in useState
@@ -59,68 +59,81 @@ npx create-react-app <folder name>
 
 ## 7. Lists & Keys
 
-### What's you learned?
+### What you learned?
+
+- Set items array
+- Create structure of Content component
+- Make handleCheck function
+- Add onChange for assign handleCheck function
+- Use HOF(High-Order Function) map for changing variable of item's "checked" boolean
+- Import react-icons for adding "FaTrashAlt" font-icon
+- Use ternary operator to adjust style when "checked" is "true"
+- Apply onDoubleClick method to "label" element for making same effect as checked is true
+- Create handleDelete method to delete item
+- Add handleDelete method in FaTrashAlt font-icon
+- Click the font-icon, then delete clicked item
+- Make effect when no longer exist items, then display "Your list is empty" comment on page
 
 ## 8. Props & Prop Drilling
 
-### What's you learned?
+### What you learned?
 
 ## 9. Controlled Component Inputs
 
-### What's you learned?
+### What you learned?
 
 ## 10. Project Challenge
 
-### What's you learned?
+### What you learned?
 
 ## 11. useEffect Hook
 
-### What's you learned?
+### What you learned?
 
 ## 12. JSON Server
 
-### What's you learned?
+### What you learned?
 
 ## 13. Fetch API Data
 
-### What's you learned?
+### What you learned?
 
 ## 14. CRUD Operations
 
-### What's you learned?
+### What you learned?
 
 ## 15. Fetch Data Challenge
 
-### What's you learned?
+### What you learned?
 
 ## 16. React Router
 
-### What's you learned?
+### What you learned?
 
 ## 17. Router Hooks & Links
 
-### What's you learned?
+### What you learned?
 
 ## 18. Flexbox Components
 
-### What's you learned?
+### What you learned?
 
 ## 19. Axios API Requests
 
-### What's you learned?
+### What you learned?
 
 ## 20. Custom Hooks
 
-### What's you learned?
+### What you learned?
 
 ## 21. Context API & useContext Hook
 
-### What's you learned?
+### What you learned?
 
 ## 22. Easy Peasy Redux
 
-### What's you learned?
+### What you learned?
 
 ## 23. Build & Deploy Your React Apps
 
-### What's you learned?
+### What you learned?
