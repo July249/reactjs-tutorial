@@ -1,28 +1,33 @@
+import { useState } from 'react';
+
 const Content = () => {
+  const [name, setName] = useState('Tom');
+  const [count, setCount] = useState(0);
+
   const handleNameChange = () => {
-    const names = ['Bob', 'Kevin', 'Carl', 'Jibro'];
+    const names = ['Bob', 'Kevin', 'Carl', 'Tom'];
     const int = Math.floor(Math.random() * 4);
-    return names[int];
+    setName(names[int]);
   };
 
   const handleClick = () => {
-    console.log('You clicked it');
+    setCount(count + 1); // log result is "0"
+    // log result is "1" after click on second button and click on first button, again
+    console.log(count);
   };
 
-  const handleClick2 = (name) => {
-    console.log(`${name} was clicked`);
-  };
-
-  const handleClick3 = (e) => {
-    console.log(e.target.innerText);
+  const handleClick2 = () => {
+    console.log(count); // log result is "1" after click on first button
+    // NOTE: only print the result of "count"! Not calculated on "count"
+    // So, keep printed same value of count
   };
 
   return (
     <main>
-      <p onDoubleClick={handleClick}>Hello {handleNameChange()}!</p>
+      <p onDoubleClick={handleClick}>Hello {name}!</p>
+      <button onClick={handleNameChange}>Change Name</button>
       <button onClick={handleClick}>Click It</button>
-      <button onClick={() => handleClick2('Tom')}>Click It</button>
-      <button onClick={(e) => handleClick3(e)}>Click It</button>
+      <button onClick={handleClick2}>Click It</button>
     </main>
   );
 };
