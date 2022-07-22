@@ -1,25 +1,17 @@
-// bad case
-/* 
-const Header = (props) => {
-  return (
-    <header>
-      <h1>{props.title} List</h1>
-    </header>
-  );
-};
-
-export default Header;
-  */
-// NOTE: When you write just "props" on parameter area, then it can cause ambiguous expression, which parameters are transfered in current component
-// So, you should write specifically distructure parameters to make sure what is it!
-
-// good case
 const Header = ({ title }) => {
   return (
     <header>
       <h1>{title}</h1>
     </header>
   );
+};
+
+// defaultProps
+// defaultProps allow us to set values for the props expected in the component
+// and if those are not provided then the default values will take over instead of receiving an error
+// In other words, when you're first designing the component and maybe you're not receiving the date from an api or even a local storage like we have
+Header.defaultProps = {
+  title: 'Default Title',
 };
 
 export default Header;
