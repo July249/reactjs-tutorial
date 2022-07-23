@@ -53,7 +53,7 @@ function App() {
     e.preventDefault();
 
     if (!newItem) return;
-    // clear input of addItem
+    addItem(newItem);
     setNewItem('');
   };
 
