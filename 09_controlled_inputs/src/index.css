@@ -1,3 +1,4 @@
+/* index.js */
 * {
   margin: 0;
   padding: 0;
@@ -16,6 +17,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* App.js */
 .App {
   display: flex;
   flex-direction: column;
@@ -28,6 +30,7 @@ body {
   margin: auto;
 }
 
+/* Header.js */
 header {
   width: calc(100% - 2px);
   padding: 0 0.25em;
@@ -38,6 +41,7 @@ header {
   align-items: center;
 }
 
+/* Content.js */
 main {
   width: 100%;
   display: flex;
@@ -48,6 +52,7 @@ main {
   overflow-y: auto;
 }
 
+/* Footer.js */
 footer {
   width: 100%;
   padding: 0.25em;
@@ -57,6 +62,7 @@ footer {
   place-content: center;
 }
 
+/* ItemList.js */
 ul {
   width: 100%;
   list-style: none;
@@ -67,6 +73,7 @@ ul li::before {
   content: '\200B';
 }
 
+/* LineItem.js */
 .item {
   display: flex;
   justify-content: flex-start;
@@ -113,5 +120,74 @@ ul li::before {
 .item svg:focus,
 .item svg:hover {
   color: red;
+  outline: none;
+}
+
+/* AddItem.js */
+.addForm {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  margin: 0.5rem 0 0;
+  padding: 0 0.5rem 0.25rem;
+  border-bottom: 1px solid #eee;
+}
+
+.addForm label {
+  position: absolute;
+  left: -99999px;
+}
+
+.addForm input[type='text'] {
+  flex-grow: 1;
+  max-width: calc(100% - 50px);
+  min-height: 48px;
+  font-size: 1rem;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  margin-right: 0.25rem;
+  outline: none;
+}
+
+button {
+  height: 48px;
+  min-width: 48px;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  background-color: aliceblue;
+  color: mediumblue;
+  cursor: pointer;
+}
+
+button:focus,
+button:hover {
+  color: white;
+  background-color: limegreen;
+  outline: none;
+}
+
+/* searchForm.js */
+.searchForm {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  margin: 0.25rem 0 0;
+  padding: 0 0.5rem 0.25rem;
+  border-bottom: 1px solid #eee;
+}
+
+.searchForm label {
+  position: absolute;
+  left: -99999px;
+}
+
+.searchForm input[type='text'] {
+  flex-grow: 1;
+  max-width: 100%;
+  min-height: 48px;
+  font-size: 1rem;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
   outline: none;
 }
