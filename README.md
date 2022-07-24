@@ -78,9 +78,35 @@ npx create-react-app <folder name>
 
 ### What you learned?
 
+- Make the top of listItem meet the bottom of header component
+- Transfer the properties App to Header component
+- (1) Bad Case: implicitly transfer properties by just writing "props" (this notation makes ambiguous expression!)
+- (2) Good Case: destructure properties to make clearly what it is transfered!
+- defaultProps
+- Move items, setItems, handleCheck, handleDelete functions on App.js
+- Transfer properties (item, handleCheck, handleDelete) to Content component
+- Transfer the property (length)
+- Display the number of items on the bottom of page
+- Detach <!-- <ul>...</ul> --> elements in Content component to seperate another component, which is named "ItemList" component (Note: relatively the Content component too heavy!)
+- makes a re-usable line item component
+
 ## 9. Controlled Component Inputs
 
 ### What you learned?
+
+- Create AddItem component
+- Styling css about AddItem elements in index.css
+- Implement AddItem component in App.js
+- Add properties from App.js on AddItem.js
+- Apply handleSubmit function
+- Transfer input text to newItem & set newItem by using onChange() method
+- Add handleSubmit function and addItem control
+- Remove repeatly codes and add setAndSaveItems function
+- Implement addItem function into handleSubmit function
+- Load the data in local storage item list on page
+- Create SearchItem component and styling css
+- Apply search filter on Content component
+- Adjust useRef to make initialize input and button state
 
 ## 10. Project Challenge
 
