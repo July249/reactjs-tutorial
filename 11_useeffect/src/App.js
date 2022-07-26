@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from './Header';
 import SearchItem from './SearchItem';
 import AddItem from './AddItem';
@@ -11,6 +11,27 @@ function App() {
   );
   const [newItem, setNewItem] = useState('');
   const [search, setSearch] = useState('');
+
+  // log "render" keep printing when you act on page
+  // because this useEffect doesn't have any dependency
+  /* useEffect(() => {
+    console.log('render');
+  }); */
+  // log "load time" printed at the first render time
+  // because this useEffect has empty array, [], dependency
+  /* useEffect(() => {
+    console.log('load time');
+  }, []); */
+
+  // So, there are two type of useEffect running!
+  // 1. run all the time for every render
+  // 2. run only at the app load time, just one time
+  //    because the array, which has item info, never changes and this is a dependency
+
+  /* updating items state (i.e. run when items state has changed) */
+  useEffect(() => {
+    console.log('updating items state');
+  }, [items]);
 
   const setAndSaveItems = (newItems) => {
     setItems(newItems);
