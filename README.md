@@ -112,9 +112,21 @@ npx create-react-app <folder name>
 
 ### What you learned?
 
+- Create "Printing Color" app
+- Review what you learned so far
+
 ## 11. useEffect Hook
 
 ### What you learned?
+
+- Concept of useEffect
+- Different order of rendering
+- (1) useEffect is asynchronous function
+- (2) useEffect runs only at dependency changes
+- Apply the concept of useEffect by using localStorage API
+- Use useEffect for set item on local storage
+- Remove setAndSaveItems function 'cause no longer needs
+- get Item from local storage must include empty array, [], to avoid that items is null (it causes error which app doesn't work)
 
 ## 12. JSON Server
 
