@@ -6,29 +6,24 @@ import Content from './Content';
 import Footer from './Footer';
 
 function App() {
-  const [items, setItems] = useState(
+  /* const [items, setItems] = useState(
     JSON.parse(localStorage.getItem('shoppinglist')) || []
-  );
+  ); */
+  const [items, setItems] = useState([]);
+  // where [] in useState is for initialization
   const [newItem, setNewItem] = useState('');
   const [search, setSearch] = useState('');
 
-  /* Different order of rendering */
-  console.log('before useEffect');
-
+  /* run useEffect only at load time */
   useEffect(() => {
-    console.log('inside useEffect');
-  }, [items]);
+    setItems(JSON.parse(localStorage.getItem('shoppinglist')));
+  }, []);
 
-  console.log('after useEffect');
-
-  /* logs
-  before useEffect
-  after useEffect
-  inside useEffect
-  */
-  // From above logs, you can find the fact of useEffect
-  // 1. useEffect is asynchronous function
-  // 2. useEffect runs only at dependency changes
+  /* Caution! */
+  // Below code cause the endless loop!
+  /* useEffect(() => {
+    setItems(JSON.parse(localStorage.getItem('shoppinglist')));
+  }, [items]); */
 
   const setAndSaveItems = (newItems) => {
     setItems(newItems);
