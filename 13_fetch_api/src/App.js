@@ -6,14 +6,19 @@ import Content from './Content';
 import Footer from './Footer';
 
 function App() {
-  const [items, setItems] = useState(
-    JSON.parse(localStorage.getItem('shoppinglist')) || []
-  );
+  const API_URL = 'http://localhost:3500/items';
+
+  const [items, setItems] = useState([]);
   const [newItem, setNewItem] = useState('');
   const [search, setSearch] = useState('');
 
   useEffect(() => {
-    localStorage.setItem('shoppinglist', JSON.stringify(items));
+    const fetchItems = async () => {
+      const res = await fetch(API_URL);
+      const listItems = await res.json();
+      setItems(listItems);
+    };
+    fetchItems();
   }, [items]);
 
   const addItem = (item) => {
