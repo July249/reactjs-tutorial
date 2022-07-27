@@ -132,6 +132,12 @@ npx create-react-app <folder name>
 
 ### What you learned?
 
+- Create data folder and db.json file
+- Install json-server
+- Type "npx json-server -p 3500 -w data/db.json" in console
+- Access Resources "http://localhost:3500/items" in this case
+-
+
 ## 13. Fetch API Data
 
 ### What you learned?
