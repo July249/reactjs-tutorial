@@ -4,11 +4,11 @@ import SearchItem from './SearchItem';
 import AddItem from './AddItem';
 import Content from './Content';
 import Footer from './Footer';
+import apiRequest from './apiRequest';
 
 function App() {
   const API_URL = 'http://localhost:3500/items';
 
-  // Now data stored only JSON server not localStorage
   const [items, setItems] = useState([]);
   const [newItem, setNewItem] = useState('');
   const [search, setSearch] = useState('');
@@ -36,23 +36,58 @@ function App() {
     }, 2000);
   }, []);
 
-  const addItem = (item) => {
+  const addItem = async (item) => {
     const id = items.length ? items[items.length - 1].id + 1 : 1;
     const myNewItem = { id, checked: false, item };
     const listItems = [...items, myNewItem];
     setItems(listItems);
+
+    // Rest API - POST Request
+    const postOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      // Write item on db.json
+      body: JSON.stringify(myNewItem),
+    };
+    const result = await apiRequest(API_URL, postOptions);
+    if (result) setFetchError(result);
   };
 
-  const handleCheck = (id) => {
+  const handleCheck = async (id) => {
     const listItems = items.map((item) =>
       item.id === id ? { ...item, checked: !item.checked } : item
     );
     setItems(listItems);
+
+    // get item that is checked
+    const myItem = listItems.filter((item) => item.id === id);
+    // Rest API - UPDATE Request
+    const updateOptions = {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      // Write "checked" property of item on db.json
+      body: JSON.stringify({ checked: myItem[0].checked }),
+    };
+    const reqUrl = `${API_URL}/${id}`;
+    const result = await apiRequest(reqUrl, updateOptions);
+    if (result) setFetchError(result);
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     const listItems = items.filter((item) => item.id !== id);
     setItems(listItems);
+
+    // Rest API - DELETE Request
+    const deleteOptions = {
+      method: 'DELETE',
+    };
+    const reqUrl = `${API_URL}/${id}`;
+    const result = await apiRequest(reqUrl, deleteOptions);
+    if (result) setFetchError(result);
   };
 
   const handleSubmit = (e) => {
