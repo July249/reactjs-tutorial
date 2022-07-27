@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 22px;
+}
+
+body {
+  min-height: 100vh;
+  font-family: 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+button {
+  border: 1px solid black;
+  width: 100%;
+  height: 3vh;
+  font-size: 18px;
+}
+
+button:focus {
+  background-color: black;
+  color: white;
+}
+
+span {
+  cursor: pointer;
+}
+
+main {
+  font-size: 18px;
+  margin: 30px;
+  padding: 10px;
+}
