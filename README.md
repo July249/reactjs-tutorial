@@ -136,11 +136,22 @@ npx create-react-app <folder name>
 - Install json-server
 - Type "npx json-server -p 3500 -w data/db.json" in console
 - Access Resources "http://localhost:3500/items" in this case
--
 
 ## 13. Fetch API Data
 
 ### What you learned?
+
+- Load data from db.json not localStorage
+- To load db.json data, use Fetch API (NOTE: DO NOT USE async directly in useEffect 'cause it is already asynchronous function)
+- Change the main tag to div tag in Content component
+- Create try-catch
+- Add fetchError useState to send error message
+- Add paragraph to display fetchError when API_URL incorrect or disable
+- In during loading time, do not show error message on page
+- In real case, REST API do not response as fast as Local environment
+- Add setTimeout function to simulate loading delay at 2000msec
+- Set new useState, isLoading setIsLoading
+- If isLoading is true, "Loading Items..." paragraph shows up on page
 
 ## 14. CRUD Operations
 
