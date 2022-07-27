@@ -157,6 +157,18 @@ npx create-react-app <folder name>
 
 ### What you learned?
 
+- Create API Request function
+- If it cause error, return error message
+- APPENDIX: HTTP STATE CODE + MOST FREQUENCY CODE
+- In page, remove "Bread" item
+- In page, add "Tomato" item
+- In page, add "Candy" item
+- NOTE: the list item in db.json was changed directly typing on web page
+- Create POST Request and call apiRequest function for posting "myNewItem" in db.json
+- Create PATCH Request and call apiRequest function for changing "checked" property of item
+- Create POST Request and call apiRequest function for delete item
+- NOTE: In PATCH & POST Requests, NOT USED "API_URL" directly because it should apply your request on specific id of item. So, USE "API_URL/#id"
+
 ## 15. Fetch Data Challenge
 
 ### What you learned?
