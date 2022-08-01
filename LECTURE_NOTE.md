@@ -193,6 +193,65 @@ npx create-react-app <folder name>
 
 ### What you learned?
 
+- Transfer "title" property to Header component
+- Create form, input element
+- Create Menu items (Home, Post, About)
+- Connect these menu to each url direction by using Link method
+- [Structure of Page]
+
+```
+ Header
+ Nav
+ [Main Page]
+ ㄴ Home(first landing page)
+      ㄴ Feed
+           ㄴ Post
+ ㄴ PostPage
+      ㄴ NewPost
+ ㄴ About
+ Footer
+
+* Missing (for 404 Error)
+```
+
+=====================================
+
+- Restructure Home, PostPage components
+- Transfer "posts" property to Feed component
+- Create Feed component
+  ㄴ Transfer "posts" property to Feed component
+  ㄴ Import Post component
+  ㄴ mapping posts
+- Create Post component
+  ㄴ Received "post" property
+  ㄴ Spread each post and display post's body shortly (by using slice() function)
+- Error solution
+  "'You rendered descendant <Routes> (or called `useRoutes()`) at "/accounts/" (under <Route path="">) but the parent route path has no trailing "\*". This means if you navigate deeper, the parent won't match anymore and therefore the child routes will never render.'"
+
+```
+>> Add "*" after "App/"
+```
+
+- Use "useParams()" method
+- Create delete button
+- Make handleDelete function
+- After delete post, automatically move to "Home" page (by using "useNavigate()" method)
+  (NOTE: No more use "useHistory" method at V6 React-Router)
+- Install date functions (type "npm i date-fns -S" on console)
+- Add copyright paragraph on Footer component
+- Simply type paragraph about this blog
+- Make Missing Error page (for approaching wrong url)
+- Make NewPost
+- Add handleSubmit function for NewPost component
+  ㄴ set the "id" (if posts.length > 0, set post.id as the last one. if not, set 1)
+  ㄴ set "newPost" 's contents
+  ㄴ add "newPost" to posts array
+  ㄴ newally set Posts as allPosts
+  ㄴ clear postTitle, postBody
+  ㄴ use useNavigate to move on Home url('/')
+- Set useEffect to make filtered results
+- Transfer "searchResults" to Home component
+
 ## 18. Flexbox Components
 
 ### What you learned?
