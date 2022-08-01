@@ -1,45 +1,31 @@
 import { useState, useEffect } from 'react';
-import Lists from './Lists';
+import Form from './Form';
+import List from './List';
 
 function App() {
   const API_URL = 'https://jsonplaceholder.typicode.com/';
 
-  const [lists, setLists] = useState([]);
-  const [cat, setCat] = useState('users');
+  const [reqType, setReqType] = useState('users');
+  const [items, setItems] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(`${API_URL}${cat}`);
+        const res = await fetch(`${API_URL}${reqType}`);
         const data = await res.json();
-        setLists(data);
+        console.log(data);
+        setItems(data);
       } catch (err) {
         console.log(err);
       }
     };
     fetchData();
-  }, [cat]);
-
-  const handleClick = async (e) => {
-    setCat(e.target.id);
-  };
+  }, [reqType]);
 
   return (
     <div className="App">
-      <nav onClick={(e) => handleClick(e)}>
-        <button id="users" className="category">
-          users
-        </button>
-        <button id="posts" className="category">
-          posts
-        </button>
-        <button id="comments" className="category">
-          comments
-        </button>
-      </nav>
-      <main>
-        <Lists lists={lists} />
-      </main>
+      <Form reqType={reqType} setReqType={setReqType} />
+      <List items={items} />
     </div>
   );
 }

@@ -10,34 +10,42 @@ html {
 
 body {
   min-height: 100vh;
-  font-family: 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
-    'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-nav {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
+form {
+  width: 100%;
+  position: fixed;
 }
 
 button {
-  border: 1px solid black;
-  width: 100%;
-  height: 3vh;
-  font-size: 18px;
+  width: 33.33%;
+  padding: 0.5rem;
+  font-size: 1rem;
 }
 
-button:focus {
+button.selected {
   background-color: black;
   color: white;
-  cursor: pointer;
 }
 
-main {
-  font-size: 18px;
-  margin: 0 30px;
-  padding: 10px;
+ul {
+  padding: 3rem 2rem 1rem;
+}
+
+li {
+  margin-bottom: 1rem;
+}
+
+.table-container {
+  width: 100%;
+  overflow-y: auto;
+  padding-top: 52px;
+}
+
+td {
+  border: 1px solid #000;
+  padding: 0.25rem;
 }
