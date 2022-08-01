@@ -177,6 +177,18 @@ npx create-react-app <folder name>
 
 ### What you learned?
 
+- Install react-router-dom (by type "npm i react-router-dom -S" in console)
+- Import 'react-router-dom"
+- Set render structure (add Router and Route)
+- Create Header, Nav, Footer components that stay on the page even when the other components change
+- Create main area of the page components(Home, NewPost, PostPage, About, Missing) that occupy the main element will change
+- Use Route, Switch react router dom
+- Use useHistory (one of custom hooks)
+  ㄴ this hook allow us to access the browser history
+  ㄴ but react router does not make requests from the server again it just routes within the app
+  ㄴ responds faster so it improves ux
+- Construct the structure of components
+
 ## 17. Router Hooks & Links
 
 ### What you learned?
