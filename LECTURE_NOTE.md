@@ -256,6 +256,9 @@ npx create-react-app <folder name>
 
 ### What you learned?
 
+- Way to make flex-box styling
+- Use "flex-grow" setting
+
 ## 19. Axios API Requests
 
 ### What you learned?
