@@ -260,6 +260,38 @@ npx create-react-app <folder name>
 
 ### What you learned?
 
+- Install axios (type "npm i axios" on console)
+- Create baseURL for using axios
+  ㄴ baseURL is server url
+- After create axios, type "npx json-server -p 3500 -w data/db.json" to run server
+- Fetch Posts by using useEffect
+- Adjust handleSubmit by using axios
+  ㄴ After submit new post, it is saved on db.json
+  ㄴ To show up the new post, it should call db.json again and re-loading the data to uploading
+  ㄴ If it doesn't work, catch the error and show the message of error
+- Adjust delete operation to handleDelete
+  ㄴ Note that no needs response(or res) in this case 'cause we don't need recall data
+- Create handleEdit function
+  ㄴ Reset datetime based on edit time
+  ㄴ Edit post content and store those items on updated variable
+  ㄴ Use "put" method and uploading updatedPost on db.json
+  ㄴ To re-load posts, use setPosts()
+  ㄴ Show up editted post only it is matched post.id to id
+  ㄴ If it didn't match, only show up old one
+- Add the function that connect title to home
+- Create EditPost page
+  ㄴ Transfer "posts, editTitle, setEditTtile, editBody, setEditBody, handleEdit" to EditPost component as properties
+  ㄴ Find post which match post.id to id of url
+  ㄴ Initial setting is same as origin title and body (i.e., setEditTitle(post.title) setEditBody(post.body) )
+  ㄴ className and id of this page didn't change, 'cause it should apply same css styling as like NewPost component
+  ㄴ If editTitle exist, render Edit Post page
+  ㄴ if it doesn't, render "Not Found" page
+  ㄴ Most rest part after return is same as NewPost component, BUT the function of editButton works operating handleEdit() when it is clicked!
+- Create Edit button on PostPage component
+  ㄴ connected edit page which has same post.id
+- Modified data on Edit Page
+- Adjust css styling to editButton
+
 ## 20. Custom Hooks
 
 ### What you learned?
