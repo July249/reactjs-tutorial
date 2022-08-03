@@ -17,11 +17,14 @@ function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [postTitle, setPostTitle] = useState('');
   const [postBody, setPostBody] = useState('');
+  const [editTitle, setEditTitle] = useState('');
+  const [editBody, setEditBody] = useState('');
 
   let navigate = useNavigate();
 
   useEffect(() => {
     const fetchPosts = async () => {
+      // Read Operation
       try {
         const res = await api.get('/posts');
         setPosts(res.data);
@@ -55,7 +58,8 @@ function App() {
     const id = posts.length ? posts[posts.length - 1].id + 1 : 1;
     const datetime = format(new Date(), 'MMMM dd, yyyy pp');
     const newPost = { id, title: postTitle, datetime, body: postBody };
-    // adjust handleSubmit by using axios
+
+    // Create Operation
     try {
       const res = await api.post('/posts', newPost);
       const allPosts = [...posts, res.data];
@@ -68,6 +72,27 @@ function App() {
     }
   };
 
+  // Edit funtion
+  const handleEdit = async (id) => {
+    // reset datetime (based on editting time)
+    const datetime = format(new Date(), 'MMMM dd, yyyy pp');
+    // edit post content and store those items on updatedPost variable
+    const updatedPost = { id, title: editTitle, datetime, body: editBody };
+    // Update Operation
+    try {
+      const res = await api.put(`/posts/${id}`, updatedPost);
+      // show up editted post only it is matched post.id === id
+      // if it didn't match, only show up old one
+      setPosts(posts.map((post) => (post.id === id ? { ...res.data } : post)));
+      setEditTitle('');
+      setEditBody('');
+      navigate('/');
+    } catch (err) {
+      console.log(`Error: ${err.message}`);
+    }
+  };
+
+  // Delete Operation
   const handleDelete = async (id) => {
     try {
       await api.delete(`/posts/${id}`);
