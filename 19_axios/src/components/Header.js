@@ -1,7 +1,11 @@
+import { Link } from 'react-router-dom';
+
 const Header = ({ title }) => {
   return (
     <header className="Header">
-      <h1>{title}</h1>
+      <Link to="/" style={{ textDecoration: 'none' }}>
+        <h1>{title}</h1>
+      </Link>
     </header>
   );
 };
