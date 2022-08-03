@@ -3,6 +3,7 @@ import Nav from './components/Nav';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import NewPost from './pages/NewPost';
+import EditPost from './pages/EditPost';
 import PostPage from './pages/PostPage';
 import About from './pages/About';
 import Missing from './pages/Missing';
@@ -74,15 +75,11 @@ function App() {
 
   // Edit funtion
   const handleEdit = async (id) => {
-    // reset datetime (based on editting time)
     const datetime = format(new Date(), 'MMMM dd, yyyy pp');
-    // edit post content and store those items on updatedPost variable
     const updatedPost = { id, title: editTitle, datetime, body: editBody };
     // Update Operation
     try {
       const res = await api.put(`/posts/${id}`, updatedPost);
-      // show up editted post only it is matched post.id === id
-      // if it didn't match, only show up old one
       setPosts(posts.map((post) => (post.id === id ? { ...res.data } : post)));
       setEditTitle('');
       setEditBody('');
@@ -119,6 +116,19 @@ function App() {
               postBody={postBody}
               setPostBody={setPostBody}
               handleSubmit={handleSubmit}
+            />
+          }
+        />
+        <Route
+          path="/edit/:id"
+          element={
+            <EditPost
+              posts={posts}
+              editTitle={editTitle}
+              setEditTitle={setEditTitle}
+              editBody={editBody}
+              setEditBody={setEditBody}
+              handleEdit={handleEdit}
             />
           }
         />
