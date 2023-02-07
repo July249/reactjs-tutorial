@@ -16,7 +16,7 @@ export default function AppCounter() {
    *      <Counter count={count2} setCount={setCount2} />
    *    </div>
    *  </div>
-   * );
+   * );g
    */
 
   const [count, setCount] = useState(0);
