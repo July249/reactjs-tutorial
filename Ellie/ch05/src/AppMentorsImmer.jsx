@@ -1,44 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
+import { useImmer } from "use-immer";
 
-export default function AppMentor() {
-  const [person, setPerson] = useState({
-    name: "엘리",
-    title: "개발자",
-    mentors: [
-      {
-        name: "밥",
-        title: "시니어 개발자",
-      },
-      {
-        name: "제임스",
-        title: "시니어 개발자",
-      },
-    ],
-  });
+export default function AppMentorsImmer() {
+  const [person, updatePerson] = useImmer(initialPerson);
   const handleUpdate = () => {
     const prev = prompt("누구의 이름을 바꾸고 싶은가요?");
     const current = prompt("이름을 무엇으로 바꾸고 싶은가요?");
-    setPerson((person) => ({
-      ...person,
-      mentors: person.mentors.map((mentor) => {
-        return mentor.name === prev ? { ...mentor, name: current } : { ...mentor };
-      }),
-    }));
+    updatePerson((person) => {
+      const mentor = person.mentors.find((m) => m.name === prev);
+      mentor.name = current;
+    });
   };
   const handleAdd = () => {
     const name = prompt("추가하고 싶은 멘토의 이름은 무엇인가요?");
     const title = prompt("당신 멘토의 직책은 무엇인가요?");
-    setPerson((person) => ({
-      ...person,
-      mentors: [...person.mentors, { name, title }],
-    }));
+    updatePerson((person) => person.mentors.push({ name, title }));
   };
   const handleDelete = () => {
     const name = prompt("어떤 멘토를 삭제하고 싶은가요?");
-    setPerson((person) => ({
-      ...person,
-      mentors: person.mentors.filter((m) => m.name !== name),
-    }));
+    updatePerson((person) => {
+      const index = person.mentors.findIndex((m) => m.name === name);
+      person.mentors.splice(index, 1);
+    });
   };
 
   return (
@@ -60,3 +43,18 @@ export default function AppMentor() {
     </div>
   );
 }
+
+const initialPerson = {
+  name: "엘리",
+  title: "개발자",
+  mentors: [
+    {
+      name: "밥",
+      title: "시니어 개발자",
+    },
+    {
+      name: "제임스",
+      title: "시니어 개발자",
+    },
+  ],
+};
