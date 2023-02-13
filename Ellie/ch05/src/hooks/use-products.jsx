@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 export default function useProducts({ salesOnly }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
