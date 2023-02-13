@@ -19,4 +19,6 @@ export default function useProducts({ salesOnly }) {
       console.log("🧹 깨끗하게 청소하는 일을 합니다.");
     };
   }, [salesOnly]);
+
+  return [loading, error, products];
 }
