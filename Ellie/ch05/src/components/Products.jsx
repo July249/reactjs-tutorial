@@ -16,7 +16,7 @@ export default function Products() {
         console.log("🔥 뜨끈한 데이터를 네트워크에서 받아옴");
         setProducts(data);
       })
-      .catch((err) => setError(err))
+      .catch((err) => setError("에러가 발생했음"))
       .finally(() => setLoading(false));
 
     return () => {
