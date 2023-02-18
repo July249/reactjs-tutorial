@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import Item from "../Item/Item";
 import AddTodo from "../AddTodo/AddTodo";
 import MainStyle from "./Main.module.css";
@@ -43,6 +44,7 @@ import MainStyle from "./Main.module.css";
 // ];
 
 const Main = () => {
+  const inputRef = useRef(null);
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState("");
 
@@ -67,7 +69,7 @@ const Main = () => {
     console.log(todos, typeof todos);
 
     const newItem = {
-      id: todos.length,
+      id: uuidv4(),
       isActive: false,
       isCompleted: false,
       isDeleted: false,
@@ -77,7 +79,12 @@ const Main = () => {
     const newTodolist = [...todos, newItem];
     setTodos(newTodolist);
     localStorage.setItem("todolist", JSON.stringify(newTodolist));
+    inputRef.current.value = "";
   };
+
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
 
   useEffect(() => {
     if (!todos) {
@@ -94,7 +101,7 @@ const Main = () => {
           <Item key={item.id} todo={item.todo} onDelete={handleDelete} />
         ))}
       </ul>
-      <AddTodo onCreate={handleCreate} onSubmit={handleSubmit} />
+      <AddTodo inputRef={inputRef} onCreate={handleCreate} onSubmit={handleSubmit} />
     </main>
   );
 };
