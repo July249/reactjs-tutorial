@@ -1,15 +1,11 @@
-import { useState } from "react";
-import Header from "./components/Header/Header";
-import Main from "./components/Main/Main";
-import ContainerStyle from "./App.module.css";
+import "./App.css";
+import TodoList from "./components/TodoList/TodoList";
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
   return (
-    <article className={ContainerStyle.app}>
-      <Header darkMode={darkMode} />
-      <Main />
-    </article>
+    <>
+      <TodoList />
+    </>
   );
 }
 

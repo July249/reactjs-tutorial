@@ -1,8 +1,0 @@
-.item {
-  display: flex;
-  flex-direction: row;
-}
-
-.item > .checkbox {
-  margin-right: 10px;
-}
