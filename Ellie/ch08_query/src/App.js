@@ -1,15 +1,8 @@
-import { useState } from "react";
-import Products from "./components/Products";
+import MainProducts from "./components/MainProducts";
 import "./App.css";
 
 function App() {
-  const [showProducts, setShowProducts] = useState(true);
-  return (
-    <div className="App">
-      {showProducts && <Products />}
-      <button onClick={() => setShowProducts((show) => !show)}>Toggle</button>
-    </div>
-  );
+  return <MainProducts />;
 }
 
 export default App;
