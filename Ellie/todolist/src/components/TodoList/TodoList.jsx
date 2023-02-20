@@ -25,7 +25,7 @@ export default function TodoList({ filter }) {
     <section className={styles.container}>
       <ul className={styles.list}>
         {filtered?.map((item) => (
-          <Todo key={item.id} todo={item} onUpdate={handleUpdate} onDelete={handleDelete} />
+          <Todo key={item.id} id={item.id} todo={item} onUpdate={handleUpdate} onDelete={handleDelete} />
         ))}
       </ul>
       <AddTodo onAdd={handleAdd} />
