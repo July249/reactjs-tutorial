@@ -8,6 +8,7 @@ export default function MainProducts() {
   // Products 컴포넌트를 두번 호출하기 때문에 useProduct 자체도 두번 실행된다
   // 따라서 데이터 호출 자체도 두번 되는 것이다
   // 이는 성능상에 이슈를 야기할 수 있다
+  // Query를 이용하여 cache, retry를 이용하여 보자
   return (
     <main className="container">
       <div>
