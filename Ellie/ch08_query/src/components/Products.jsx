@@ -4,10 +4,9 @@ import { useQuery } from "@tanstack/react-query";
 
 export default function Products() {
   const [checked, setChecked] = useState(false);
-  // custom hook으로 처리하였을 때는 각각의 컴포넌트를 호출할 때마다 로직이 제실행되어 중복되는 데이터 메모리를 가지게 되었다
-  // react query를 이용하여 데이터를 'products'라는 키값을 가지는 메모리에 저장을 해둔다
-  // 따라서 데이터 요청이 한번만 일어나게 된다
-  // 다른 곳에서 재사용되는 경우 'products' 키에 저장한 메모리의 값(캐쉬된 값)을 가져온다
+  // react-query를 사용하여 네트워크 통신을 구현하였을 때 치명적인 함정이 존재한다
+  // 브라우저를 클릭할 때마다, 토글할 때마다, 등등 모든 변화에 대해 매번 네트워크 요청이 반복적으로 이루어지고 있음을 확인할 수 있다
+  //
   const {
     isLoading,
     error,
