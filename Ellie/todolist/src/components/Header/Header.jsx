@@ -8,7 +8,7 @@ export default function Header({ filters, filter, onFilterChange }) {
 
   return (
     <header className={styles.header}>
-      <button type="button" onClick={toggleDarkMode}>
+      <button type="button" onClick={toggleDarkMode} className={styles.toggle}>
         {darkMode ? <MdOutlineLightMode /> : <MdDarkMode />}
       </button>
       <ul className={styles.filters}>
