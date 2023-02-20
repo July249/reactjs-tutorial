@@ -13,7 +13,7 @@ export default function Videos() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setText("");
-    navigate(`../video/${text}`);
+    navigate(`../videos/${text}`);
   };
   return (
     <div>
