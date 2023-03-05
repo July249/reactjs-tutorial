@@ -4,7 +4,7 @@ const Home = ({ posts, fetchError, isLoading }) => {
   return (
     <main className="Home">
       {isLoading && <p className="statusMsg">Loading posts...</p>}
-      {fetchError && (
+      {!isLoading && fetchError && (
         <p className="statusMsg" style={{ color: "red" }}>
           {fetchError}
         </p>
