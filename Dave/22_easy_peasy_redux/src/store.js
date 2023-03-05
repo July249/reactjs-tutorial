@@ -37,5 +37,36 @@ export default createStore({
   }),
   savePost: thunk(async (actions, newPost, helpers) => {
     const { posts } = helpers.getState();
+    try {
+      const res = await api.post('/posts', newPost);
+      actions.setPosts([...posts, res.data]);
+      actions.setPostTitle('');
+      actions.setPostBody('');
+    } catch (err) {
+      console.log(`Error: ${err.message}`);
+    }
+  }),
+  deletePost: thunk(async (actions, id, helpers) => {
+    const { posts } = helpers.getState();
+    try {
+      await api.delete(`/posts/${id}`);
+      actions.setPosts(posts.filter((post) => post.id !== id));
+    } catch (err) {
+      console.log(`Error: ${err.message}`);
+    }
+  }),
+  editPost: thunk(async (actions, updatedPost, helpers) => {
+    const { posts } = helpers.getState();
+    const { id } = updatedPost;
+    try {
+      const res = await api.put(`/posts/${id}`, updatedPost);
+      actions.setPosts(
+        posts.map((post) => (post.id === id ? { ...res.data } : post))
+      );
+      actions.setEditTitle('');
+      actions.setEditBody('');
+    } catch (err) {
+      console.log(`Error: ${err.message}`);
+    }
   }),
 });
