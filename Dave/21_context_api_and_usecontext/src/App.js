@@ -101,10 +101,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/post" element={<NewPost />} />
           <Route path="/edit/:id" element={<EditPost />} />
-          <Route
-            path="/post/:id"
-            element={<PostPage posts={posts} handleDelete={handleDelete} />}
-          />
+          <Route path="/post/:id" element={<PostPage />} />
           <Route path="/about" element={<About />} />
           <Route path="*" element={<Missing />} />
         </Routes>
