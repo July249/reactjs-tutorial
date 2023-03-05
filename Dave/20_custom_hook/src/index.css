@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
 * {
   margin: 0;
@@ -12,7 +12,7 @@ html {
 
 body {
   min-height: 100vh;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   display: flex;
@@ -43,6 +43,9 @@ body {
   width: 100%;
   background-color: #66d8f5;
   padding: 1rem;
+}
+
+.Header a {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -76,8 +79,8 @@ body {
   padding: 1rem 0 0 0.75rem;
 }
 
-.searchForm input[type='text'] {
-  font-family: 'Open Sans', sans-serif;
+.searchForm input[type="text"] {
+  font-family: "Open Sans", sans-serif;
   width: 100%;
   min-height: 48px;
   font-size: 1rem;
@@ -179,9 +182,9 @@ body {
   margin-top: 1rem;
 }
 
-.newPostForm input[type='text'],
+.newPostForm input[type="text"],
 .newPostForm textarea {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   width: 100%;
   min-height: 48px;
   font-size: 1rem;
@@ -267,7 +270,7 @@ body {
     padding: 0.5rem 0;
   }
 
-  .searchForm input[type='text'] {
+  .searchForm input[type="text"] {
     margin-left: 0.5rem;
   }
 
