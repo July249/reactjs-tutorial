@@ -98,16 +98,7 @@ function App() {
         <Header title="React JS Blog" />
         <Nav />
         <Routes>
-          <Route
-            path="/"
-            element={
-              <Home
-                posts={searchResults}
-                fetchError={fetchError}
-                isLoading={isLoading}
-              />
-            }
-          />
+          <Route path="/" element={<Home />} />
           <Route
             path="/post"
             element={
