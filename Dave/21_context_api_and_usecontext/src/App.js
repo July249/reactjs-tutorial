@@ -99,18 +99,7 @@ function App() {
         <Nav />
         <Routes>
           <Route path="/" component={Home} />
-          <Route
-            path="/post"
-            element={
-              <NewPost
-                postTitle={postTitle}
-                setPostTitle={setPostTitle}
-                postBody={postBody}
-                setPostBody={setPostBody}
-                handleSubmit={handleSubmit}
-              />
-            }
-          />
+          <Route path="/post" component={NewPost} />
           <Route
             path="/edit/:id"
             element={
