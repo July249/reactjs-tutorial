@@ -98,7 +98,7 @@ function App() {
         <Header title="React JS Blog" />
         <Nav />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" component={Home} />
           <Route
             path="/post"
             element={
