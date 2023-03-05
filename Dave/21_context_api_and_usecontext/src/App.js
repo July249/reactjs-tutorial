@@ -96,7 +96,7 @@ function App() {
     <div className="App">
       <DataProvider>
         <Header title="React JS Blog" />
-        <Nav search={search} setSearch={setSearch} />
+        <Nav />
         <Routes>
           <Route
             path="/"
