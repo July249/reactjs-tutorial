@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 
 const fib = (n) => {
   return n <= 1 ? n : fib(n - 1) + fib(n - 2);
@@ -8,7 +8,7 @@ function App() {
   const [userNumber, setUserNumber] = useState('');
   const [randomInput, setRandomInput] = useState('');
 
-  const fibNumber = fib(userNumber);
+  const fibNumber = useMemo(() => fib(userNumber), [userNumber]);
   /**
    * if userNumber = 20, fibNumber = 6765
    * if userNumber = 33, fibNumber = 3524578
