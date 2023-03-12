@@ -4,8 +4,8 @@ const Counter = () => {
   const [count, setCount] = useState(0);
 
   const handleAdd = () => {
-    setCount(count + 1); // count === prev
-    setCount(count + 1); // count === prev not prev + 1
+    setCount((prev) => prev + 1);
+    setCount((prev) => prev + 1);
   };
 
   const handleSubtract = () => {
