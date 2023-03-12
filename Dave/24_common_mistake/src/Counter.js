@@ -3,6 +3,7 @@ import { useState } from 'react';
 const Counter = () => {
   const [count, setCount] = useState(0);
   const [values, setValues] = useState([]);
+  const [state, setState] = useState({ first: '', last: '' });
 
   const handleAdd = () => {
     setCount((prev) => prev + 1);
@@ -16,6 +17,10 @@ const Counter = () => {
 
   const updateArray = (newVal) => {
     setValues((prev) => [...prev, newVal]);
+  };
+
+  const updateValues = (newVal) => {
+    setState((prev) => ({ ...prev, last: 'Kim' }));
   };
 
   return (
