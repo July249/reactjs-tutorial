@@ -32,9 +32,11 @@ export default createStore({
   }),
 
   postCount: computed((state) => state.posts.length),
+
   getPostById: computed((state) => {
     return (id) => state.posts.find((post) => post.id.toString() === id);
   }),
+
   savePost: thunk(async (actions, newPost, helpers) => {
     const { posts } = helpers.getState();
     try {
@@ -46,6 +48,7 @@ export default createStore({
       console.log(`Error: ${err.message}`);
     }
   }),
+
   deletePost: thunk(async (actions, id, helpers) => {
     const { posts } = helpers.getState();
     try {
@@ -55,6 +58,7 @@ export default createStore({
       console.log(`Error: ${err.message}`);
     }
   }),
+
   editPost: thunk(async (actions, updatedPost, helpers) => {
     const { posts } = helpers.getState();
     const { id } = updatedPost;
