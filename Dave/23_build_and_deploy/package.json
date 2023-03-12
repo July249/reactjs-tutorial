@@ -1,6 +1,7 @@
 {
   "name": "23_build_and_deploy",
   "version": "0.1.0",
+  "homepage": "https://July249.github.io/Dave/react_blog",
   "private": true,
   "dependencies": {
     "axios": "^0.27.2",
