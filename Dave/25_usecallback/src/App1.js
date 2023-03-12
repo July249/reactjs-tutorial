@@ -1,27 +1,16 @@
 import { useState, useEffect } from 'react';
 
 function App1() {
-  const [userInput, setUserInput] = useState('');
-  const [result, setResult] = useState(0);
-  const [num1] = useState(4);
-  const [num2] = useState(5);
+  const [id, setId] = useState('');
 
-  const sum = () => num1 + num2;
-
-  useEffect(() => {
-    console.log(`New sum. Value: ${sum()}`);
-    // setResult()
-  }, [sum]);
+  const handleChageId = (e) => {
+    setId(e.target.value);
+  };
 
   return (
     <main className='App'>
-      <input
-        type='text'
-        placeholder='input'
-        value={userInput}
-        onChange={(e) => setUserInput(e.target.value)}
-      />
-      <h1>Output: {userInput || '--'}</h1>
+      <input type='text' placeholder='input' onChange={handleChageId} />
+      <p>{id}</p>
     </main>
   );
 }
