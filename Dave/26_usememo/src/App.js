@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const fib = (n) => {
   return n <= 1 ? n : fib(n - 1) + fib(n - 2);
@@ -16,7 +16,21 @@ function App() {
    *
    * fib function is too heavy to calculate for every re-rendering!
    * => it needs memorization by using useMemo Hook!
+   *
+   * [useMemo vs. useCallback]
+   *
+   * useMemo gives us the result of a function it calls
+   * useCallback use callback gives us a function with referential equality
    */
+
+  useEffect(() => {
+    console.log('New number');
+    /**
+     * Since fibNumber is primitive value, 'New number' doesn't print on console even if I type some value on RandomInput.
+     * So, the dependency of useEffect works well!
+     *
+     */
+  }, [fibNumber]);
 
   return (
     <main className='App'>
