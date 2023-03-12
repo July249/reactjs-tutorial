@@ -9,6 +9,14 @@ function App() {
   const [randomInput, setRandomInput] = useState('');
 
   const fibNumber = fib(userNumber);
+  /**
+   * if userNumber = 20, fibNumber = 6765
+   * if userNumber = 33, fibNumber = 3524578
+   * if userNumber = 40, fibNumber = 102334155
+   *
+   * fib function is too heavy to calculate for every re-rendering!
+   * => it needs memorization by using useMemo Hook!
+   */
 
   return (
     <main className='App'>
