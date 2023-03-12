@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 const App = () => {
   // userInput exists only for re-rendering when you type.
@@ -12,7 +12,7 @@ const App = () => {
    * Move it inside the useEffect callback.
    * Alternatively, wrap the definition of 'sum' in its own useCallback() Hook.
    */
-  const sum = () => num1 + num2;
+  const sum = useCallback(() => num1 + num2, [num1, num2]);
 
   useEffect(() => {
     console.log(`New sum. Value: ${sum()}`);
