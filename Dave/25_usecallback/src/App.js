@@ -16,7 +16,13 @@ const App = () => {
 
   useEffect(() => {
     console.log(`New sum. Value: ${sum()}`);
-    setResult();
+    setResult(sum());
+    /**
+     * 콘솔창에 2개만 찍히는 이유는 sum의 결과가 원시값 9로 고정되어 있기 때문에
+     * 더이상 출력할 필요를 느끼지 못해서 출력하지 않았을 뿐이다
+     * 로직만 보았을 때는 이미 무한루프에 해당한다
+     * 왜냐하면 리렌더링될 때마다 sum() 함수 참조값이 바뀌기 때문이다 (참조 동일성 문제가 나타난다)
+     */
   }, [sum /* dep. is object! */]);
 
   return (
