@@ -19,11 +19,11 @@ const App = () => {
    * Move it inside the useEffect callback.
    * Alternatively, wrap the definition of 'buildArray' in its own useCallback() Hook.
    */
-  const buildArray = () => [num1, num2];
+  const buildArray = useCallback(() => [num1, num2], [num1, num2]);
 
   useEffect(() => {
     console.log(`New array: ${buildArray()}`);
-    // setResult(buildArray()); // => it makes endless rendering loop
+    setResult(buildArray()); // => it makes endless rendering loop
     /**
      * 콘솔창에 2개만 찍히는 이유는 sum의 결과가 원시값 9로 고정되어 있기 때문에
      * 더이상 출력할 필요를 느끼지 못해서 출력하지 않았을 뿐이다
