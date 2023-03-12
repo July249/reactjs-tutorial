@@ -14,9 +14,16 @@ const App = () => {
    */
   const sum = useCallback(() => num1 + num2, [num1, num2]);
 
+  /**
+   * The 'buildArray' function makes the dependencies of useEffect Hook (at line 33) change on every render.
+   * Move it inside the useEffect callback.
+   * Alternatively, wrap the definition of 'buildArray' in its own useCallback() Hook.
+   */
+  const buildArray = () => [num1, num2];
+
   useEffect(() => {
-    console.log(`New sum. Value: ${sum()}`);
-    setResult(sum());
+    console.log(`New array: ${buildArray()}`);
+    // setResult(buildArray()); // => it makes endless rendering loop
     /**
      * 콘솔창에 2개만 찍히는 이유는 sum의 결과가 원시값 9로 고정되어 있기 때문에
      * 더이상 출력할 필요를 느끼지 못해서 출력하지 않았을 뿐이다
@@ -29,7 +36,7 @@ const App = () => {
      * useCallback으로 sum() 함수를 메모이제이션하면 userInput값이 변경되어도 sum 함수에 변화가 없으면 useEffect도 실행되지 않는다
      * 정확히 의도한 sum 함수에만 의존하게 되는 것이다
      */
-  }, [sum /* dep. is object! */]);
+  }, [buildArray /* dep. is object! */]);
 
   return (
     <main className='App'>
