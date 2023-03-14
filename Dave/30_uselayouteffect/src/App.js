@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useLayoutEffect } from 'react';
 
 function App() {
   /**
@@ -29,13 +29,32 @@ function App() {
   const [sectionStyle, setSectionStyle] = useState({});
   const sectionRef = useRef();
 
-  useEffect(() => {
+  // useEffect(() => {
+  //   const random = Math.floor(Math.random() * 500);
+
+  //   for (let i = 0; i <= 100000000; i++) {
+  //     if (i === 100000000) setSectionStyle({ paddingTop: `${random}px` });
+  //   }
+  // }, [number]);
+
+  useLayoutEffect(() => {
     const random = Math.floor(Math.random() * 500);
 
     for (let i = 0; i <= 100000000; i++) {
       if (i === 100000000) setSectionStyle({ paddingTop: `${random}px` });
     }
   }, [number]);
+
+  /**
+   * Look at the browser!
+   *
+   * When you use useEffect, you can see the number change
+   * it does not delay painting the DOM to the browser
+   *
+   * However, you cannot see the number change in the case of useLayoutEffect
+   * it does delay delay painting the DOM to the browser
+   * it wants to run its code before painting to the browser
+   */
 
   return (
     <main className='App'>
