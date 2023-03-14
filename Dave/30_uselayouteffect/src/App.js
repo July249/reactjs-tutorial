@@ -53,6 +53,7 @@ function App() {
    *
    * However, you cannot see the number change in the case of useLayoutEffect
    * it does delay delay painting the DOM to the browser
+   *
    * it wants to run its code before painting to the browser
    */
 
