@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useReducer } from 'react';
 
 function App() {
+  const [state, dispatch] = useReducer(reducer, { count: 0 });
   const [userInput, setUserInput] = useState('');
-  const [count, setCount] = useState(0);
+  // const [count, setCount] = useState(0);
   const [color, setColor] = useState(false);
 
   return (
