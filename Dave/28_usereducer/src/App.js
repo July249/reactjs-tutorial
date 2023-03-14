@@ -3,16 +3,22 @@ import { useState, useReducer } from 'react';
 const reducer = (state, action) => {
   switch (action.type) {
     case 'increment':
-      return { count: state.count + 1 };
+      return { ...state, count: state.count + 1 };
     case 'decrement':
-      return { count: state.count - 1 };
+      return { ...state, count: state.count - 1 };
     case 'newUserInput':
-      return { userInput: action.payload };
+      return { ...state, userInput: action.payload };
     case 'toggleColor':
-      return { color: !state.color };
+      return { ...state, color: !state.color };
     default:
       throw new Error('Not Expected Action!');
   }
+  /**
+   * Without spread state, it makes problem when you click the color toggle button
+   * because it returns only color state not including count!
+   *
+   * So, if you click on color button without spread state, then count value will display "NaN"
+   */
 };
 
 function App() {
