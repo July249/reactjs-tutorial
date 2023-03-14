@@ -6,23 +6,33 @@ const reducer = (state, action) => {
       return { count: state.count + 1 };
     case 'decrement':
       return { count: state.count - 1 };
+    case 'newUserInput':
+      return { userInput: action.payload };
+    case 'toggleColor':
+      return { color: !state.color };
     default:
       throw new Error('Not Expected Action!');
   }
 };
 
 function App() {
-  const [state, dispatch] = useReducer(reducer, { count: 0 });
-  const [userInput, setUserInput] = useState('');
+  const [state, dispatch] = useReducer(reducer, {
+    count: 0,
+    userInput: '',
+    color: false,
+  });
+  // const [userInput, setUserInput] = useState('');
   // const [count, setCount] = useState(0);
-  const [color, setColor] = useState(false);
+  // const [color, setColor] = useState(false);
 
   return (
-    <main className='App' style={{ color: color ? '#FFF' : '#FFF952' }}>
+    <main className='App' style={{ color: state.color ? '#FFF' : '#FFF952' }}>
       <input
         type='text'
-        value={userInput}
-        onChange={(e) => setUserInput(e.target.value)}
+        value={state.userInput}
+        onChange={(e) =>
+          dispatch({ type: 'newUserInput', payload: e.target.value })
+        }
       />
       <br />
       <br />
@@ -30,11 +40,11 @@ function App() {
       <section>
         <button onClick={() => dispatch({ type: 'decrement' })}>-</button>
         <button onClick={() => dispatch({ type: 'increment' })}>+</button>
-        <button onClick={() => setColor((prev) => !prev)}>Color</button>
+        <button onClick={() => dispatch({ type: 'toggleColor' })}>Color</button>
       </section>
       <br />
       <br />
-      <p>{userInput}</p>
+      <p>{state.userInput}</p>
     </main>
   );
 }
