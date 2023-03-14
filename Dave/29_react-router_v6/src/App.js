@@ -1,6 +1,4 @@
-import Header from './components/Header';
-import Nav from './components/Nav';
-import Footer from './components/Footer';
+import Layout from './components/Layout';
 import Home from './components/Home';
 import NewPost from './components/NewPost';
 import PostPage from './components/PostPage';
@@ -73,10 +71,11 @@ function App() {
   };
 
   return (
-    <div className='App'>
-      <Header title='React JS Blog' />
-      <Nav search={search} setSearch={setSearch} />
-      <Routes>
+    <Routes>
+      <Route
+        path='/'
+        element={<Layout search={search} setSearch={setSearch} />}
+      >
         <Route index element={<Home posts={searchResults} />} />
         <Route
           path='/post'
@@ -96,9 +95,8 @@ function App() {
         />
         <Route path='/about' element={<About />} />
         <Route path='*' element={<Missing />} />
-      </Routes>
-      <Footer />
-    </div>
+      </Route>
+    </Routes>
   );
 }
 
