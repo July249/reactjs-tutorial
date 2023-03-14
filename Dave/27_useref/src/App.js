@@ -27,6 +27,12 @@ function App() {
     inputRef.current.focus();
   };
 
+  /**
+   * Warning! - Use useRef to create a reference to something in your component when you really need to access it that way
+   *
+   * => Do not use useRef to make it Vanilla style!
+   */
+
   return (
     <main className='App'>
       <input
