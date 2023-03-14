@@ -13,6 +13,7 @@ function App() {
    */
   const handleChage = (e) => {
     setRandomInput(e.target.value);
+    renders.current++;
   };
 
   return (
@@ -23,6 +24,7 @@ function App() {
         placeholder='Random Input'
         onChange={handleChage}
       />
+      <p>Renders: {renders.current}</p>
       <br />
       <br />
       <p>{randomInput}</p>
