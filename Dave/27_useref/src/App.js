@@ -3,6 +3,7 @@ import { useState, useRef } from 'react';
 function App() {
   const [randomInput, setRandomInput] = useState('');
   const renders = useRef(0);
+  const inputRef = useRef();
   /**
    * Two Important Rules of useRef
    *
@@ -16,15 +17,29 @@ function App() {
     renders.current++;
   };
 
+  /**
+   * useRef to set focus on an element in JSX
+   *
+   * That kind of allows us access to the dom like Vanilla JS
+   *
+   */
+  const focusOnInput = () => {
+    inputRef.current.focus();
+  };
+
   return (
     <main className='App'>
       <input
+        ref={inputRef}
         type='text'
         value={randomInput}
         placeholder='Random Input'
         onChange={handleChage}
       />
       <p>Renders: {renders.current}</p>
+      <br />
+      <br />
+      <button onClick={focusOnInput}>Focus</button>
       <br />
       <br />
       <p>{randomInput}</p>
