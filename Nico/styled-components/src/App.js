@@ -14,11 +14,22 @@ const Circle = styled(Box)`
   border-radius: 50%;
 `;
 
+const Btn = styled.button`
+  color: white;
+  background-color: tomato;
+  border: 0;
+  border-radius: 15px;
+`;
+
 function App() {
   return (
-    <TopDiv>
-      <Box bgColor='teal' />
-      <Circle bgColor='tomato' />
+    <TopDiv as='header'>
+      {/* <Box bgColor='teal' />
+      <Circle bgColor='tomato' /> */}
+      <Btn>Log in</Btn>
+      <Btn as='a' href='/'>
+        Log in
+      </Btn>
     </TopDiv>
   );
 }
