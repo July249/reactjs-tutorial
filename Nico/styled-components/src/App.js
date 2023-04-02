@@ -16,6 +16,13 @@ const rotateAnimation = keyframes`
   }
 `;
 
+const Emoji = styled.span`
+  font-size: 36px;
+  &:active {
+    opacity: 0;
+  }
+`;
+
 const Box = styled.div`
   width: 200px;
   height: 200px;
@@ -25,15 +32,11 @@ const Box = styled.div`
   background-color: tomato;
   animation: ${rotateAnimation} 2s linear infinite;
 
-  span {
-    font-size: 36px;
-
+  // Targeting the Emoji component whatever this element is
+  // So no longer need to be span element
+  ${Emoji} {
     &:hover {
-      font-size: 48px;
-    }
-
-    &:active {
-      opacity: 0;
+      font-size: 98px;
     }
   }
 `;
@@ -42,7 +45,7 @@ function App() {
   return (
     <Wrapper>
       <Box>
-        <span>😃</span>
+        <Emoji as='p'>😃</Emoji>
       </Box>
     </Wrapper>
   );
