@@ -5,23 +5,20 @@ const TopDiv = styled.div`
 `;
 
 const Box = styled.div`
+  background-color: ${(props) => props.bgColor};
   width: 100px;
   height: 100px;
 `;
 
-const TomatoDiv = styled(Box)`
-  background-color: tomato;
-`;
-
-const TealDiv = styled(Box)`
-  background-color: teal;
+const Circle = styled(Box)`
+  border-radius: 50%;
 `;
 
 function App() {
   return (
     <TopDiv>
-      <TomatoDiv />
-      <TealDiv />
+      <Box bgColor='teal' />
+      <Circle bgColor='tomato' />
     </TopDiv>
   );
 }
