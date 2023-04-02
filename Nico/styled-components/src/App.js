@@ -21,15 +21,38 @@ const Btn = styled.button`
   border-radius: 15px;
 `;
 
+// Adding required attribute of input for each Input, you can use styled-components attrs like this!
+// const Input = styled.input`
+//   background-color: tomato;
+// `;
+const Input = styled.input.attrs({ required: true })`
+  background-color: tomato;
+`;
+
 function App() {
   return (
     <TopDiv as='header'>
       {/* <Box bgColor='teal' />
       <Circle bgColor='tomato' /> */}
-      <Btn>Log in</Btn>
+      {/* <Btn>Log in</Btn>
       <Btn as='a' href='/'>
         Log in
-      </Btn>
+      </Btn> */}
+      {/* Adding required attribute of input for each Input, you can use styled-components attrs! */}
+      {/* <Input required />
+      <Input required />
+      <Input required />
+      <Input required />
+      <Input required />
+      <Input required />
+      <Input required />
+      <Input required /> */}
+      <Input />
+      <Input />
+      <Input />
+      <Input />
+      <Input />
+      <Input />
     </TopDiv>
   );
 }
