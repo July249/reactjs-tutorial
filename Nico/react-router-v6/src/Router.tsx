@@ -20,8 +20,6 @@ const router = createBrowserRouter([
         element: <About />,
       },
     ],
-    // The cool thing about errorElement is that it allows user can access the other pages which is not crashed
-    // Also, it protects the other components against crashing problems
     errorElement: <NotFound />,
   },
 ]);
