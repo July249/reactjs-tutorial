@@ -1,18 +1,16 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Header from './components/Header';
-import Home from './screens/Home';
-import About from './screens/About';
+import { createBrowserRouter } from 'react-router-dom';
+// import Header from './components/Header';
+// import Home from './screens/Home';
+// import About from './screens/About';
 
-function Router() {
-  return (
-    <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/about' element={<About />} />
-      </Routes>
-    </BrowserRouter>
-  );
-}
+// Step 1. Now rename Root instead of App
+import Root from './Root';
 
-export default Router;
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Root />,
+  },
+]);
+
+export default router;
