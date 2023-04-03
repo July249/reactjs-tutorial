@@ -8,8 +8,6 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    {/* Step 2. set RouterProvider instead of App component */}
-    {/* <App /> */}
     <RouterProvider router={router} />
   </React.StrictMode>
 );
