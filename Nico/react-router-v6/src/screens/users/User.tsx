@@ -12,7 +12,11 @@ function User() {
       <hr />
       {/* By using 'followers' not '/followers', this link has relatively directory root */}
       <Link to='followers'>see followers</Link>
-      <Outlet />
+      <Outlet
+        context={{
+          nameOfUser: users[Number(id) - 1].name,
+        }}
+      />
     </div>
   );
 }
