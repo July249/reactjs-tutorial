@@ -1,9 +1,10 @@
-import { useState, useTransition } from 'react';
+import { useState, useTransition, useDeferredValue } from 'react';
 
 const Example1 = () => {
   const [count, setCount] = useState(0);
   const [item, setItem] = useState([]);
-  const [isPending, startTransition] = useTransition({ timeoutMs: 3000 });
+  const [isPending, startTransition] = useTransition();
+  const deferredCount = useDeferredValue(count);
 
   const handleClick = () => {
     // urgent update
@@ -21,6 +22,8 @@ const Example1 = () => {
   const content = (
     <div className='App'>
       <button onClick={handleClick}>{count}</button>
+      {/* deferredCount is handled like not urgent update! */}
+      <p>Deferred Count: {deferredCount}</p>
       {isPending ? <p>Loading ...</p> : null}
       <ul>
         {item.map((item) => (
