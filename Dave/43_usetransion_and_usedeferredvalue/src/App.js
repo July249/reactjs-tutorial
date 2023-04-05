@@ -1,5 +1,7 @@
+import Example1 from './Example1';
+
 function App() {
-  return <div className='App'></div>;
+  return <Example1 />;
 }
 
 export default App;
