@@ -161,6 +161,7 @@ function Coin() {
               <span>{priceInfo?.max_supply}</span>
             </OverviewItem>
           </Overview>
+          {/* Nested Routes */}
           <Routes>
             <Route path={`/${coinId}/price`} element={<Price />} />
             <Route path={`/${coinId}/chart`} element={<Chart />} />
