@@ -1,9 +1,9 @@
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import Router from './Router';
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 
 const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
   ${reset}
 
   * {
@@ -23,6 +23,16 @@ const GlobalStyle = createGlobalStyle`
 function App() {
   return (
     <>
+      <HelmetProvider>
+        <Helmet>
+          <link rel='preconnect' href='https://fonts.googleapis.com' />
+          <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='anonymous' />
+          <link
+            href='https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap'
+            rel='stylesheet'
+          />
+        </Helmet>
+      </HelmetProvider>
       <GlobalStyle />
       <Router />
     </>
