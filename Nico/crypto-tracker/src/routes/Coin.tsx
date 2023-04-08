@@ -127,10 +127,6 @@ function Coin() {
   const { state } = useLocation();
   const priceMatch = useMatch('/:coinId/price');
   const chartMatch = useMatch('/:coinId/chart');
-
-  // The key of react-query should be unique!
-  // const {} = useQuery(coinId, () => fetchCoinInfo(coinId));
-  // const {} = useQuery(coinId, () => fetchCoinTickers(coinId));
   const { isLoading: infoLoading, data: infoData } = useQuery<InfoData>(['info', coinId], () =>
     fetchCoinInfo(String(coinId))
   );
@@ -184,8 +180,8 @@ function Coin() {
           </Tabs>
           {/* Nested Routes */}
           <Routes>
-            <Route path='/:coinId/price' element={<Price />} />
-            <Route path='/:coinId/chart' element={<Chart />} />
+            <Route path='chart' element={<Chart />} />
+            <Route path='price' element={<Price />} />
           </Routes>
         </>
       )}
