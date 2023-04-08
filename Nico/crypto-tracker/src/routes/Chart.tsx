@@ -70,7 +70,7 @@ function Chart({ coinId }: chartProps) {
               categories: data?.map((price) => {
                 const month = new Date(price.time_close * 1000).toDateString().slice(4, 7);
                 const date = new Date(price.time_close * 1000).toDateString().slice(8, 10);
-                return date + ' ' + month;
+                return date + ' ' + month || '';
               }),
             },
             yaxis: {
