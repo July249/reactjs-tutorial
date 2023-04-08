@@ -4,6 +4,7 @@ import Price from './Price';
 import styled from 'styled-components';
 import { useQuery } from 'react-query';
 import { fetchCoinInfo, fetchCoinTickers } from '../api';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 const Title = styled.h1`
   font-size: 48px;
@@ -132,60 +133,70 @@ function Coin() {
   );
   const { isLoading: tickersLoading, data: tickersData } = useQuery<PriceData>(
     ['tickers', coinId],
-    () => fetchCoinTickers(String(coinId))
+    () => fetchCoinTickers(String(coinId)),
+    {
+      refetchInterval: 10000,
+    }
   );
   const loading = infoLoading || tickersLoading;
 
   return (
-    <Container>
-      <Header>
-        <Title>{state?.name ? state.name : loading ? 'Loadin...' : infoData?.name}</Title>
-      </Header>
-      {loading ? (
-        <Loader>Loading...</Loader>
-      ) : (
-        <>
-          <Overview>
-            <OverviewItem>
-              <span>Rank:</span>
-              <span>{infoData?.rank}</span>
-            </OverviewItem>
-            <OverviewItem>
-              <span>Symbol:</span>
-              <span>${infoData?.symbol}</span>
-            </OverviewItem>
-            <OverviewItem>
-              <span>Open Source:</span>
-              <span>{infoData?.open_source ? 'Yes' : 'No'}</span>
-            </OverviewItem>
-          </Overview>
-          <Description>{infoData?.description}</Description>
-          <Overview>
-            <OverviewItem>
-              <span>Total Suply:</span>
-              <span>{tickersData?.total_supply}</span>
-            </OverviewItem>
-            <OverviewItem>
-              <span>Max Supply:</span>
-              <span>{tickersData?.max_supply}</span>
-            </OverviewItem>
-          </Overview>
-          <Tabs>
-            <Tab isActive={chartMatch !== null}>
-              <Link to={`/${coinId}/chart`}>Chart</Link>
-            </Tab>
-            <Tab isActive={priceMatch !== null}>
-              <Link to={`/${coinId}/price`}>Price</Link>
-            </Tab>
-          </Tabs>
-          {/* Nested Routes */}
-          <Routes>
-            <Route path='chart' element={<Chart coinId={coinId as string} />} />
-            <Route path='price' element={<Price />} />
-          </Routes>
-        </>
-      )}
-    </Container>
+    <>
+      <HelmetProvider>
+        <Helmet>
+          <title>{state?.name ? state.name : loading ? 'Loading...' : infoData?.name}</title>
+        </Helmet>
+      </HelmetProvider>
+      <Container>
+        <Header>
+          <Title>{state?.name ? state.name : loading ? 'Loadin...' : infoData?.name}</Title>
+        </Header>
+        {loading ? (
+          <Loader>Loading...</Loader>
+        ) : (
+          <>
+            <Overview>
+              <OverviewItem>
+                <span>Rank:</span>
+                <span>{infoData?.rank}</span>
+              </OverviewItem>
+              <OverviewItem>
+                <span>Symbol:</span>
+                <span>${infoData?.symbol}</span>
+              </OverviewItem>
+              <OverviewItem>
+                <span>Price:</span>
+                <span>${tickersData?.quotes.USD.price.toFixed(3)}</span>
+              </OverviewItem>
+            </Overview>
+            <Description>{infoData?.description}</Description>
+            <Overview>
+              <OverviewItem>
+                <span>Total Suply:</span>
+                <span>{tickersData?.total_supply}</span>
+              </OverviewItem>
+              <OverviewItem>
+                <span>Max Supply:</span>
+                <span>{tickersData?.max_supply}</span>
+              </OverviewItem>
+            </Overview>
+            <Tabs>
+              <Tab isActive={chartMatch !== null}>
+                <Link to={`/${coinId}/chart`}>Chart</Link>
+              </Tab>
+              <Tab isActive={priceMatch !== null}>
+                <Link to={`/${coinId}/price`}>Price</Link>
+              </Tab>
+            </Tabs>
+            {/* Nested Routes */}
+            <Routes>
+              <Route path='chart' element={<Chart coinId={coinId as string} />} />
+              <Route path='price' element={<Price />} />
+            </Routes>
+          </>
+        )}
+      </Container>
+    </>
   );
 }
 

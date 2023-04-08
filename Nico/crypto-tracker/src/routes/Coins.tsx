@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { fetchCoins } from '../api';
@@ -68,28 +69,35 @@ function Coins() {
   const { isLoading, data } = useQuery<ICoin[]>('allCoins', fetchCoins);
 
   return (
-    <Container>
-      <Header>
-        <Title>Coins</Title>
-      </Header>
-      {isLoading ? (
-        <Loader>Loading...</Loader>
-      ) : (
-        <CoinsList>
-          {data?.slice(0, 50).map((coin) => (
-            <Coin key={coin.id}>
-              <Link to={`/${coin.id}`} state={{ name: coin.name }}>
-                <Img
-                  src={`https://cryptocurrencyliveprices.com/img/${coin.id}.png`}
-                  alt={coin.name}
-                />
-                {coin.name} &rarr;
-              </Link>
-            </Coin>
-          ))}
-        </CoinsList>
-      )}
-    </Container>
+    <>
+      <HelmetProvider>
+        <Helmet>
+          <title>Coin</title>
+        </Helmet>
+      </HelmetProvider>
+      <Container>
+        <Header>
+          <Title>Coins</Title>
+        </Header>
+        {isLoading ? (
+          <Loader>Loading...</Loader>
+        ) : (
+          <CoinsList>
+            {data?.slice(0, 50).map((coin) => (
+              <Coin key={coin.id}>
+                <Link to={`/${coin.id}`} state={{ name: coin.name }}>
+                  <Img
+                    src={`https://cryptocurrencyliveprices.com/img/${coin.id}.png`}
+                    alt={coin.name}
+                  />
+                  {coin.name} &rarr;
+                </Link>
+              </Coin>
+            ))}
+          </CoinsList>
+        )}
+      </Container>
+    </>
   );
 }
 
