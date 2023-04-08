@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
@@ -67,6 +68,28 @@ interface ICoin {
 
 function Coins() {
   const { isLoading, data } = useQuery<ICoin[]>('allCoins', fetchCoins);
+  const [pos, setPos] = useState(0);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleScroll = () => {
+    setPos(window.pageYOffset);
+  };
+
+  const storedPos = sessionStorage.getItem('pos');
+
+  useEffect(() => {
+    if (storedPos) {
+      window.scrollTo(0, parseInt(storedPos));
+    }
+  }, [storedPos]);
+
+  const handleStorePosY = () => {
+    sessionStorage.setItem('pos', window.pageYOffset.toString());
+  };
 
   return (
     <>
@@ -84,7 +107,7 @@ function Coins() {
         ) : (
           <CoinsList>
             {data?.slice(0, 50).map((coin) => (
-              <Coin key={coin.id}>
+              <Coin key={coin.id} onClick={handleStorePosY}>
                 <Link to={`/${coin.id}`} state={{ name: coin.name }}>
                   <Img
                     src={`https://cryptocurrencyliveprices.com/img/${coin.id}.png`}
