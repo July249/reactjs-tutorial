@@ -20,7 +20,7 @@ const PriceListWrapper = styled.ul`
   }
   &::-webkit-scrollbar-track {
     border-radius: 100px;
-    background: ${(props) => props.theme.textColor};
+    background: ${(props) => props.theme.bgAlphaColor};
   }
   &::-webkit-scrollbar-thumb {
     background: ${(props) => props.theme.accentColor};
@@ -35,8 +35,8 @@ const PriceList = styled.li`
   padding: 10px 20px 10px;
   width: 100%;
   border-radius: 15px;
-  background-color: ${(props) => props.theme.textColor};
-  color: ${(props) => props.theme.bgColor};
+  background-color: ${(props) => props.theme.bgAlphaColor};
+  color: ${(props) => props.theme.textColor};
 `;
 const PriceText = styled.p`
   display: flex;

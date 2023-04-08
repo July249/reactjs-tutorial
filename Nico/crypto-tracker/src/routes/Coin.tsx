@@ -37,7 +37,7 @@ const Header = styled.header`
 const Overview = styled.div`
   display: flex;
   justify-content: space-between;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: ${(props) => props.theme.bgAlphaColor};
   padding: 10px 20px;
   border-radius: 10px;
 `;
@@ -46,12 +46,14 @@ const OverviewItem = styled.div`
   flex-direction: column;
   align-items: center;
   width: 33%;
+  color: ${(props) => props.theme.textColor};
 
   span:first-child {
     font-size: 10px;
     font-weight: 400;
     text-transform: uppercase;
     margin-bottom: 5px;
+    color: ${(props) => props.theme.textColor};
   }
 `;
 const Description = styled.p`
@@ -68,7 +70,7 @@ const Tab = styled.span<{ isActive: boolean }>`
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 400;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: ${(props) => props.theme.bgAlphaColor};
   border-radius: 10px;
   color: ${(props) => (props.isActive ? props.theme.accentColor : props.theme.textColor)};
   a {

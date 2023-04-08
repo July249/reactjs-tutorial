@@ -10,46 +10,38 @@ const Container = styled.div`
   max-width: 480px;
   margin: 0 auto;
 `;
-
 const Header = styled.header`
   height: 15vh;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
-
 const CoinsList = styled.ul``;
-
 const Coin = styled.li`
-  background-color: #fff;
-  color: ${(props) => props.theme.bgColor};
+  background-color: ${(props) => props.theme.bgAlphaColor};
+  color: ${(props) => props.theme.textColor};
   border-radius: 15px;
   margin-bottom: 10px;
-
   a {
     display: flex;
     align-items: center;
     padding: 20px;
     transition: color 0.2s ease-in;
   }
-
   &:hover {
     a {
       color: ${(props) => props.theme.accentColor};
     }
   }
 `;
-
 const Title = styled.h1`
   font-size: 48px;
   color: ${(props) => props.theme.accentColor};
 `;
-
 const Loader = styled.span`
   display: block;
   text-align: center;
 `;
-
 const Img = styled.img`
   width: 35px;
   height: 35px;
