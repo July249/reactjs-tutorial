@@ -163,7 +163,7 @@ function Coin() {
   const loading = infoLoading || tickersLoading;
 
   const handleBack = () => {
-    navigate(-1);
+    navigate('/');
   };
 
   return (
@@ -220,7 +220,7 @@ function Coin() {
 
             <Routes>
               <Route path='chart' element={<Chart coinId={coinId as string} />} />
-              <Route path='price' element={<Price />} />
+              <Route path='price' element={<Price coinId={coinId as string} />} />
             </Routes>
           </>
         )}
