@@ -32,11 +32,18 @@ function Chart({ coinId }: chartProps) {
         'Loading...'
       ) : (
         <ApexChart
-          type='line'
+          type='candlestick'
           series={[
             {
-              name: 'price',
-              data: data?.map((price) => parseFloat(price.close)) as number[],
+              data: data?.map((price) => ({
+                x: new Date(price.time_close * 1000),
+                y: [
+                  parseFloat(price.open),
+                  parseFloat(price.high),
+                  parseFloat(price.low),
+                  parseFloat(price.close),
+                ],
+              })) as [],
             },
           ]}
           options={{
@@ -52,41 +59,26 @@ function Chart({ coinId }: chartProps) {
               background: 'transparent',
             },
             grid: { show: false },
-            stroke: {
-              curve: 'smooth',
-              width: 4,
-            },
             xaxis: {
-              labels: {
-                show: false,
-              },
-              axisTicks: {
-                show: false,
-              },
-              axisBorder: {
-                show: false,
-              },
               type: 'datetime',
-              categories: data?.map((price) => {
-                const month = new Date(price.time_close * 1000).toDateString().slice(4, 7);
-                const date = new Date(price.time_close * 1000).toDateString().slice(8, 10);
-                return date + ' ' + month || '';
-              }),
             },
             yaxis: {
-              labels: {
-                show: false,
+              tooltip: {
+                enabled: true,
               },
             },
-            fill: {
-              type: 'gradient',
-              gradient: {
-                gradientToColors: ['#0be881'],
-                stops: [0, 100],
+            plotOptions: {
+              candlestick: {
+                colors: {
+                  upward: '#0be881',
+                  downward: '#ff3f34',
+                },
               },
             },
-            colors: ['#0fbcf9'],
             tooltip: {
+              x: {
+                format: 'dd MMM yyyy',
+              },
               y: {
                 formatter: (val: number) => `$${val.toFixed(2)}`,
               },
