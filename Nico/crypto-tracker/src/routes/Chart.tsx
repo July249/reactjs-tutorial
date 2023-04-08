@@ -25,6 +25,7 @@ function Chart({ coinId }: chartProps) {
       refetchInterval: 10000,
     }
   );
+  if (!data) return null;
 
   return (
     <div>
@@ -35,20 +36,21 @@ function Chart({ coinId }: chartProps) {
           type='candlestick'
           series={[
             {
-              data: data?.map((price) => ({
-                x: new Date(price.time_close * 1000),
-                y: [
-                  parseFloat(price.open),
-                  parseFloat(price.high),
-                  parseFloat(price.low),
-                  parseFloat(price.close),
-                ],
-              })) as [],
+              data:
+                (data.map((price) => ({
+                  x: new Date(price.time_close * 1000),
+                  y: [
+                    parseFloat(price.open),
+                    parseFloat(price.high),
+                    parseFloat(price.low),
+                    parseFloat(price.close),
+                  ],
+                })) as []) || null,
             },
           ]}
           options={{
             theme: {
-              mode: 'dark',
+              mode: 'light',
             },
             chart: {
               width: 500,
