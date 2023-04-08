@@ -36,7 +36,7 @@ function Chart({ coinId }: chartProps) {
           series={[
             {
               name: 'price',
-              data: data?.map((price) => Number(price.close)) as number[],
+              data: data?.map((price) => parseFloat(price.close)) as number[],
             },
           ]}
           options={{
