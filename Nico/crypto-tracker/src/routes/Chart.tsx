@@ -22,6 +22,8 @@ function Chart({ coinId }: chartProps) {
     fetchCoinHistory(coinId)
   );
 
+  console.log(data);
+
   return (
     <div>
       {isLoading ? (
@@ -62,10 +64,29 @@ function Chart({ coinId }: chartProps) {
               axisBorder: {
                 show: false,
               },
+              type: 'datetime',
+              categories: data?.map((price) => {
+                const month = new Date(price.time_close * 1000).toDateString().slice(4, 7);
+                const date = new Date(price.time_close * 1000).toDateString().slice(8, 10);
+                return date + ' ' + month;
+              }),
             },
             yaxis: {
               labels: {
                 show: false,
+              },
+            },
+            fill: {
+              type: 'gradient',
+              gradient: {
+                gradientToColors: ['#0be881'],
+                stops: [0, 100],
+              },
+            },
+            colors: ['#0fbcf9'],
+            tooltip: {
+              y: {
+                formatter: (val: number) => `$${val.toFixed(2)}`,
               },
             },
           }}
