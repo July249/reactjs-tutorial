@@ -1,4 +1,12 @@
-import { Link, Routes, Route, useLocation, useParams, useMatch } from 'react-router-dom';
+import {
+  Link,
+  Routes,
+  Route,
+  useLocation,
+  useParams,
+  useMatch,
+  useNavigate,
+} from 'react-router-dom';
 import Chart from './Chart';
 import Price from './Price';
 import styled from 'styled-components';
@@ -20,6 +28,7 @@ const Container = styled.div`
   margin: 0 auto;
 `;
 const Header = styled.header`
+  position: relative;
   height: 15vh;
   display: flex;
   justify-content: center;
@@ -65,6 +74,18 @@ const Tab = styled.span<{ isActive: boolean }>`
   a {
     padding: 7px 0px;
     display: block;
+  }
+`;
+const BackButton = styled.button`
+  position: absolute;
+  left: 0px;
+  background: transparent;
+  border: none;
+  color: ${(props) => props.theme.textColor};
+  font-size: 24px;
+  cursor: pointer;
+  &:hover {
+    color: ${(props) => props.theme.accentColor};
   }
 `;
 
@@ -126,6 +147,7 @@ interface PriceData {
 function Coin() {
   const { coinId } = useParams();
   const { state } = useLocation();
+  const navigate = useNavigate();
   const priceMatch = useMatch('/:coinId/price');
   const chartMatch = useMatch('/:coinId/chart');
   const { isLoading: infoLoading, data: infoData } = useQuery<InfoData>(['info', coinId], () =>
@@ -140,6 +162,10 @@ function Coin() {
   );
   const loading = infoLoading || tickersLoading;
 
+  const handleBack = () => {
+    navigate(-1);
+  };
+
   return (
     <>
       <HelmetProvider>
@@ -149,6 +175,9 @@ function Coin() {
       </HelmetProvider>
       <Container>
         <Header>
+          <BackButton type='button' onClick={handleBack} aria-label='previous page'>
+            &larr;
+          </BackButton>
           <Title>{state?.name ? state.name : loading ? 'Loadin...' : infoData?.name}</Title>
         </Header>
         {loading ? (
@@ -188,7 +217,7 @@ function Coin() {
                 <Link to={`/${coinId}/price`}>Price</Link>
               </Tab>
             </Tabs>
-            {/* Nested Routes */}
+
             <Routes>
               <Route path='chart' element={<Chart coinId={coinId as string} />} />
               <Route path='price' element={<Price />} />
