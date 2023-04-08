@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
@@ -11,7 +10,7 @@ const Container = styled.div`
 `;
 
 const Header = styled.header`
-  height: 10vh;
+  height: 15vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,7 +28,7 @@ const Coin = styled.li`
     display: flex;
     align-items: center;
     padding: 20px;
-    transition: color 0.5s ease-in;
+    transition: color 0.2s ease-in;
   }
 
   &:hover {
@@ -52,7 +51,7 @@ const Loader = styled.span`
 const Img = styled.img`
   width: 35px;
   height: 35px;
-  margin-bottom: 10px;
+  margin-right: 10px;
 `;
 
 interface ICoin {
@@ -77,11 +76,11 @@ function Coins() {
         <Loader>Loading...</Loader>
       ) : (
         <CoinsList>
-          {data?.map((coin) => (
+          {data?.slice(0, 50).map((coin) => (
             <Coin key={coin.id}>
               <Link to={`/${coin.id}`} state={{ name: coin.name }}>
                 <Img
-                  src={`https://coinicons-api.vercel.app/api/icon/${coin.symbol.toLowerCase()}`}
+                  src={`https://cryptocurrencyliveprices.com/img/${coin.id}.png`}
                   alt={coin.name}
                 />
                 {coin.name} &rarr;
