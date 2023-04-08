@@ -22,6 +22,7 @@ const Coin = styled.li`
   color: ${(props) => props.theme.textColor};
   border-radius: 15px;
   margin-bottom: 10px;
+  transition: background-color 0.4s ease-in;
   a {
     display: flex;
     align-items: center;
@@ -29,6 +30,7 @@ const Coin = styled.li`
     transition: color 0.2s ease-in;
   }
   &:hover {
+    background-color: #f5f5f5;
     a {
       color: ${(props) => props.theme.accentColor};
     }
