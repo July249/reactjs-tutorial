@@ -1,8 +1,6 @@
-import { ICoin } from './routes/Coins';
+const BASE_URL = 'https://api.coinpaprika.com/v1';
 
-const BASE_URL = 'https://api.coinpaprika.com/v3';
-
-export function fetchCoins(): Promise<ICoin[]> {
+export function fetchCoins(): Promise<any> {
   return fetch(`${BASE_URL}/coins`).then((response) => response.json());
 }
 
