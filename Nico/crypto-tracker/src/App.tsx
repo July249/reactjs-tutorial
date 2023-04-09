@@ -1,12 +1,10 @@
 import Router from './Router';
 import reset from 'styled-reset';
-import { useState } from 'react';
 import { darkTheme, lightTheme } from './theme';
 import { ThemeProvider } from 'styled-components';
 import { createGlobalStyle } from 'styled-components';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-// Recoil Settings
 import { useRecoilValue } from 'recoil';
 import { isDarkAtom } from './atoms';
 
