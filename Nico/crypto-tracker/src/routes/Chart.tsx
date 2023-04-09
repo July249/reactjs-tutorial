@@ -3,6 +3,7 @@ import { fetchCoinHistory } from '../api';
 import ApexChart from 'react-apexcharts';
 
 interface chartProps {
+  isDark: boolean;
   coinId: string;
 }
 
@@ -17,7 +18,7 @@ interface IHistoricalData {
   volume: string;
 }
 
-function Chart({ coinId }: chartProps) {
+function Chart({ isDark, coinId }: chartProps) {
   const { isLoading, data } = useQuery<IHistoricalData[]>(
     ['ohlcv', coinId],
     () => fetchCoinHistory(coinId),
@@ -26,6 +27,7 @@ function Chart({ coinId }: chartProps) {
     }
   );
   if (!data) return null;
+  console.log(data);
 
   return (
     <div>
@@ -50,7 +52,7 @@ function Chart({ coinId }: chartProps) {
           ]}
           options={{
             theme: {
-              mode: 'light',
+              mode: isDark ? 'dark' : 'light',
             },
             chart: {
               width: 500,

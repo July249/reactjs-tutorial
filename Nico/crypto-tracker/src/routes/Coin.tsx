@@ -9,8 +9,10 @@ import {
 } from 'react-router-dom';
 import Chart from './Chart';
 import Price from './Price';
+import { useContext } from 'react';
 import styled from 'styled-components';
 import { useQuery } from 'react-query';
+import { ThemeContext } from 'styled-components';
 import { fetchCoinInfo, fetchCoinTickers } from '../api';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
@@ -146,7 +148,11 @@ interface PriceData {
   };
 }
 
-function Coin() {
+interface CoinProps {
+  isDark: boolean;
+}
+
+function Coin({ isDark }: CoinProps) {
   const { coinId } = useParams();
   const { state } = useLocation();
   const navigate = useNavigate();
@@ -221,7 +227,7 @@ function Coin() {
             </Tabs>
 
             <Routes>
-              <Route path='chart' element={<Chart coinId={coinId as string} />} />
+              <Route path='chart' element={<Chart isDark={isDark} coinId={coinId as string} />} />
               <Route path='price' element={<Price coinId={coinId as string} />} />
             </Routes>
           </>

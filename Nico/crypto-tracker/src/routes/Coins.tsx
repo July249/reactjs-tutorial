@@ -23,6 +23,7 @@ const Coin = styled.li`
   border-radius: 15px;
   margin-bottom: 10px;
   transition: background-color 0.4s ease-in;
+  border: 2px solid ${(props) => props.theme.textColor};
   a {
     display: flex;
     align-items: center;
@@ -60,7 +61,11 @@ interface ICoin {
   type: string;
 }
 
-function Coins() {
+interface ICoinsProps {
+  toggleDark: () => void;
+}
+
+function Coins({ toggleDark }: ICoinsProps) {
   const { isLoading, data } = useQuery<ICoin[]>('allCoins', fetchCoins);
   const [pos, setPos] = useState(0);
 
@@ -95,6 +100,9 @@ function Coins() {
       <Container>
         <Header>
           <Title>Coins</Title>
+          <button type='button' onClick={toggleDark}>
+            Toggle Dark Mode
+          </button>
         </Header>
         {isLoading ? (
           <Loader>Loading...</Loader>
