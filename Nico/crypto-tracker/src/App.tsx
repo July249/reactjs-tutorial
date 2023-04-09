@@ -6,6 +6,9 @@ import { ThemeProvider } from 'styled-components';
 import { createGlobalStyle } from 'styled-components';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
+// Recoil Settings
+import { useRecoilValue } from 'recoil';
+import { isDarkAtom } from './atoms';
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -27,8 +30,8 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 function App() {
-  const [isDark, setIsDark] = useState<boolean>(false);
-  const toggleDark = () => setIsDark((prev) => !prev);
+  const isDark = useRecoilValue(isDarkAtom);
+
   return (
     <>
       <HelmetProvider>
@@ -43,7 +46,7 @@ function App() {
       </HelmetProvider>
       <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
         <GlobalStyle />
-        <Router isDark={isDark} toggleDark={toggleDark} />
+        <Router />
         <ReactQueryDevtools initialIsOpen={true} />
       </ThemeProvider>
     </>
