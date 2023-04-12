@@ -1,12 +1,12 @@
 import { useRef, useCallback } from 'react';
 import Post from './Post';
 import { useInfiniteQuery } from 'react-query';
-import { getPostPage } from './api/axios';
+import { getPostsPage } from './api/axios';
 
 const Example2 = () => {
   const { data, status, error, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery(
     '/posts',
-    ({ pageParam = 1 }) => getPostPage(pageParam),
+    ({ pageParam = 1 }) => getPostsPage(pageParam),
     {
       getNextPageParam: (lastPage, allPages) => {
         return lastPage.length ? allPages.length + 1 : undefined;
@@ -33,7 +33,7 @@ const Example2 = () => {
 
   if (status === 'error') return <p className='center'>Error: {error.message}</p>;
 
-  const content = data.pages.map((page) => {
+  const content = data?.pages.map((page) => {
     return page.map((post, idx) => {
       if (page.length === idx + 1) {
         return <Post key={post.id} post={post} ref={lastPostRef} />;
@@ -47,7 +47,7 @@ const Example2 = () => {
       <h1 id='top'>
         &infin; Infinite Query &amp; Scroll
         <br />
-        &infin; Ex. 1 - React only
+        &infin; Ex. 2 - React Query
       </h1>
       {content}
       {isFetchingNextPage && <p className='center'>Loading More Posts...</p>}
