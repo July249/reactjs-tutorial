@@ -35,7 +35,7 @@ const Example2 = () => {
 
   const content = data.pages.map((page) => {
     return page.map((post, idx) => {
-      if (results.length === idx + 1) {
+      if (page.length === idx + 1) {
         return <Post key={post.id} post={post} ref={lastPostRef} />;
       }
       return <Post key={post.id} post={post} />;
