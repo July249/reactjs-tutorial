@@ -49,7 +49,13 @@ function ToDoList() {
         <input type='text' {...register('lastName', { required: true })} placeholder='Last Name' />
         <input
           type='text'
-          {...register('username', { required: true, minLength: 10 })}
+          {...register('username', {
+            required: true,
+            minLength: {
+              value: 5,
+              message: 'Username should be longer than 5 characters',
+            },
+          })}
           placeholder='Username'
         />
         <input
