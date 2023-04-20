@@ -1,11 +1,18 @@
 import { useForm } from 'react-hook-form';
+import { atom, useRecoilValue, useSetRecoilState } from 'recoil';
+
+const todoState = atom({
+  key: 'todo',
+  default: [],
+});
 
 interface IFormData {
-  [key: string]: string;
   todo: string;
 }
 
 function ToDoList() {
+  const value = useRecoilValue(todoState);
+  const modFn = useSetRecoilState(todoState);
   const { register, handleSubmit, setValue, setError } = useForm<IFormData>();
 
   const onAddTodo = (data: IFormData) => {
@@ -14,6 +21,8 @@ function ToDoList() {
   };
   return (
     <div>
+      <h1>To Do</h1>
+      <hr />
       <form onSubmit={handleSubmit(onAddTodo)}>
         <input
           type='text'
@@ -22,6 +31,7 @@ function ToDoList() {
         />
         <button type='submit'>Add</button>
       </form>
+      <ul></ul>
     </div>
   );
 }
