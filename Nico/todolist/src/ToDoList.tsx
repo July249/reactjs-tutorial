@@ -3,6 +3,13 @@ import { useForm } from 'react-hook-form';
 
 interface IFormData {
   [key: string]: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  username: string;
+  password: string;
+  passwordCheck: string;
+  extraError: string;
 }
 
 function ToDoList() {
@@ -38,9 +45,21 @@ function ToDoList() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IFormData>();
-  const onValid = (data: any) => {
-    console.log(data);
+    setError,
+  } = useForm<IFormData>({
+    defaultValues: {
+      email: '@naver.com',
+    },
+  });
+  const onValid = (data: IFormData) => {
+    if (data.password !== data.passwordCheck) {
+      setError('passwordCheck', {
+        message: 'Password does not match',
+      });
+    }
+    setError('extraError', {
+      message: 'Server Offline',
+    });
   };
   console.log(errors);
 
@@ -81,12 +100,15 @@ function ToDoList() {
           {...register('password', { required: 'Password is required' })}
           placeholder='Password'
         />
+        <span>{errors?.password?.message}</span>
         <input
           type='text'
           {...register('passwordCheck', { required: true })}
           placeholder='Password Check'
         />
+        <span>{errors?.passwordCheck?.message}</span>
         <button type='submit'>Add</button>
+        <span>{errors?.extraError?.message}</span>
       </form>
     </div>
   );
