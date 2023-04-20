@@ -30,10 +30,12 @@ function ToDoList() {
   // );
 
   // After using react-hook-form
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState } = useForm();
   const onValid = (data: any) => {
     console.log(data);
   };
+
+  console.log(formState.errors);
 
   return (
     <div>
@@ -50,7 +52,11 @@ function ToDoList() {
           {...register('username', { required: true, minLength: 10 })}
           placeholder='Username'
         />
-        <input type='text' {...register('password', { required: true })} placeholder='Password' />
+        <input
+          type='text'
+          {...register('password', { required: 'Password is required' })}
+          placeholder='Password'
+        />
         <input
           type='text'
           {...register('passwordCheck', { required: true })}
