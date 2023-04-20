@@ -86,7 +86,10 @@ function ToDoList() {
           type='text'
           {...register('firstName', {
             required: true,
-            validate: (value) => (value.includes('nico') ? 'no nicos allowed' : true),
+            validate: {
+              noNico: (value) => (value.includes('nico') ? 'no nicos allowed' : true),
+              noNick: (value) => (value.includes('nick') ? 'no nicks allowed' : true),
+            },
           })}
           placeholder='First Name'
         />
