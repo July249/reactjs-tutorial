@@ -31,11 +31,17 @@ function ToDoList() {
 
   // After using react-hook-form
   const { register, watch } = useForm();
+  console.log(watch());
 
   return (
     <div>
       <form>
-        <input type='text' {...register('toDo')} placeholder='Write a to do' />
+        <input type='text' {...register('email')} placeholder='Email' />
+        <input type='text' {...register('firstName')} placeholder='First Name' />
+        <input type='text' {...register('lastName')} placeholder='Last Name' />
+        <input type='text' {...register('username')} placeholder='Username' />
+        <input type='text' {...register('password')} placeholder='Password' />
+        <input type='text' {...register('passwordCheck')} placeholder='Password Check' />
         <button type='submit'>Add</button>
       </form>
     </div>
