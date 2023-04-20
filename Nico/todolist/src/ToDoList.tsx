@@ -53,9 +53,13 @@ function ToDoList() {
   });
   const onValid = (data: IFormData) => {
     if (data.password !== data.passwordCheck) {
-      setError('passwordCheck', {
-        message: 'Password does not match',
-      });
+      setError(
+        'passwordCheck',
+        {
+          message: 'Password does not match',
+        },
+        { shouldFocus: true } // focus on the input
+      );
     }
     setError('extraError', {
       message: 'Server Offline',
