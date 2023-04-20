@@ -30,18 +30,32 @@ function ToDoList() {
   // );
 
   // After using react-hook-form
-  const { register, watch } = useForm();
-  console.log(watch());
+  const { register, handleSubmit } = useForm();
+  const onValid = (data: any) => {
+    console.log(data);
+  };
 
   return (
     <div>
-      <form>
-        <input type='text' {...register('email')} placeholder='Email' />
-        <input type='text' {...register('firstName')} placeholder='First Name' />
-        <input type='text' {...register('lastName')} placeholder='Last Name' />
-        <input type='text' {...register('username')} placeholder='Username' />
-        <input type='text' {...register('password')} placeholder='Password' />
-        <input type='text' {...register('passwordCheck')} placeholder='Password Check' />
+      <form style={{ display: 'flex', flexDirection: 'column' }} onSubmit={handleSubmit(onValid)}>
+        <input type='text' {...register('email', { required: true })} placeholder='Email' />
+        <input
+          type='text'
+          {...register('firstName', { required: true })}
+          placeholder='First Name'
+        />
+        <input type='text' {...register('lastName', { required: true })} placeholder='Last Name' />
+        <input
+          type='text'
+          {...register('username', { required: true, minLength: 10 })}
+          placeholder='Username'
+        />
+        <input type='text' {...register('password', { required: true })} placeholder='Password' />
+        <input
+          type='text'
+          {...register('passwordCheck', { required: true })}
+          placeholder='Password Check'
+        />
         <button type='submit'>Add</button>
       </form>
     </div>
