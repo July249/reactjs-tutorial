@@ -84,7 +84,10 @@ function ToDoList() {
         <span>{errors?.email?.message}</span>
         <input
           type='text'
-          {...register('firstName', { required: true })}
+          {...register('firstName', {
+            required: true,
+            validate: (value) => !value.includes('nico'),
+          })}
           placeholder='First Name'
         />
         <input type='text' {...register('lastName', { required: true })} placeholder='Last Name' />
