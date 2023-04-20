@@ -42,7 +42,13 @@ function ToDoList() {
       <form style={{ display: 'flex', flexDirection: 'column' }} onSubmit={handleSubmit(onValid)}>
         <input
           type='text'
-          {...register('email', { required: true, pattern: /^[A-Za-z0-9._%+-]+@naver.com$/ })}
+          {...register('email', {
+            required: true,
+            pattern: {
+              value: /^[A-Za-z0-9._%+-]+@naver.com$/,
+              message: 'Only naver.com email is allowed',
+            },
+          })}
           placeholder='Email'
         />
         <input
