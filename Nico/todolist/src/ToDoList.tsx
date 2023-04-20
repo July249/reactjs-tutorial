@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { atom, useRecoilValue, useSetRecoilState } from 'recoil';
+import { atom, useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 
 const todoState = atom({
   key: 'todo',
@@ -11,8 +11,9 @@ interface IFormData {
 }
 
 function ToDoList() {
-  const value = useRecoilValue(todoState);
-  const modFn = useSetRecoilState(todoState);
+  const [value, modFn] = useRecoilState(todoState);
+  // const value = useRecoilValue(todoState);
+  // const modFn = useSetRecoilState(todoState);
   const { register, handleSubmit, setValue, setError } = useForm<IFormData>();
 
   const onAddTodo = (data: IFormData) => {
