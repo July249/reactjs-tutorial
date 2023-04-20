@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
+interface IFormData {
+  [key: string]: string;
+}
+
 function ToDoList() {
   // Before using react-hook-form
   // const [todo, setTodo] = useState<string>('');
@@ -30,12 +34,15 @@ function ToDoList() {
   // );
 
   // After using react-hook-form
-  const { register, handleSubmit, formState } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IFormData>();
   const onValid = (data: any) => {
     console.log(data);
   };
-
-  console.log(formState.errors);
+  console.log(errors);
 
   return (
     <div>
@@ -43,7 +50,7 @@ function ToDoList() {
         <input
           type='text'
           {...register('email', {
-            required: true,
+            required: 'Email is required',
             pattern: {
               value: /^[A-Za-z0-9._%+-]+@naver.com$/,
               message: 'Only naver.com email is allowed',
@@ -51,6 +58,7 @@ function ToDoList() {
           })}
           placeholder='Email'
         />
+        <span>{errors?.email?.message}</span>
         <input
           type='text'
           {...register('firstName', { required: true })}
