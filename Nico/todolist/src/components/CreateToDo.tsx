@@ -10,7 +10,6 @@ function CreateToDo() {
   const setTodos = useSetRecoilState(todoState);
   const { register, handleSubmit, setValue } = useForm<IFormData>();
   const onAddTodo = ({ todo }: IFormData) => {
-    console.log('add to do', todo);
     setTodos((prev) => [{ text: todo, id: Date.now(), category: 'TO_DO' }, ...prev]);
     setValue('todo', ''); // reset input
   };
