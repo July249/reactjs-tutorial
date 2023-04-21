@@ -1,6 +1,6 @@
 import CreateToDo from './components/CreateToDo';
 import ToDo from './components/ToDo';
-import { todoState, todoSelector, categoryState } from './components/atoms';
+import { todoState, categories, todoSelector, categoryState } from './components/atoms';
 import { useRecoilValue, useRecoilState } from 'recoil';
 
 function ToDoList() {
@@ -10,9 +10,8 @@ function ToDoList() {
     const {
       currentTarget: { value },
     } = event;
-    setCategory(value);
+    setCategory(value as categories);
   };
-  // console.log(category);
 
   return (
     <div>
