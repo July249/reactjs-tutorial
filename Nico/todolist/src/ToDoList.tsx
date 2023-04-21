@@ -4,7 +4,7 @@ import { todoState, todoSelector, categoryState } from './components/atoms';
 import { useRecoilValue, useRecoilState } from 'recoil';
 
 function ToDoList() {
-  const [TO_DOs, DOINGs, DONEs] = useRecoilValue(todoSelector);
+  const todolist = useRecoilValue(todoSelector);
   const [category, setCategory] = useRecoilState(categoryState);
   const onInput = (event: React.FormEvent<HTMLSelectElement>) => {
     const {
@@ -26,9 +26,9 @@ function ToDoList() {
         </select>
       </form>
       <CreateToDo />
-      {category === 'TO_DO' && TO_DOs.map((todo) => <ToDo key={todo.id} {...todo} />)}
-      {category === 'DOING' && DOINGs.map((todo) => <ToDo key={todo.id} {...todo} />)}
-      {category === 'DONE' && DONEs.map((todo) => <ToDo key={todo.id} {...todo} />)}
+      {todolist?.map((todo) => (
+        <ToDo key={todo.id} {...todo} />
+      ))}
     </div>
   );
 }
