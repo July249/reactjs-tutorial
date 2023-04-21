@@ -1,6 +1,6 @@
 import CreateToDo from './components/CreateToDo';
 import ToDo from './components/ToDo';
-import { todoState, categories, todoSelector, categoryState } from './components/atoms';
+import { todoSelector, categoryState, Categories } from './components/atoms';
 import { useRecoilValue, useRecoilState } from 'recoil';
 
 function ToDoList() {
@@ -10,7 +10,7 @@ function ToDoList() {
     const {
       currentTarget: { value },
     } = event;
-    setCategory(value as categories);
+    setCategory(value as any);
   };
 
   return (
@@ -19,9 +19,9 @@ function ToDoList() {
       <hr />
       <form>
         <select value={category} onInput={onInput}>
-          <option value='TO_DO'>TO_DO</option>
-          <option value='DOING'>DOING</option>
-          <option value='DONE'>DONE</option>
+          <option value={Categories.TO_DO}>TO_DO</option>
+          <option value={Categories.DOING}>DOING</option>
+          <option value={Categories.DONE}>DONE</option>
         </select>
       </form>
       <CreateToDo />
