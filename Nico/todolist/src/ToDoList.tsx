@@ -1,11 +1,12 @@
 import CreateToDo from './components/CreateToDo';
 import ToDo from './components/ToDo';
-import { todoState } from './components/atoms';
+import { todoState, todoSelector } from './components/atoms';
 import { useRecoilValue } from 'recoil';
 
 function ToDoList() {
   const todos = useRecoilValue(todoState);
-  console.log(todos);
+  const selectorOutput = useRecoilValue(todoSelector);
+  console.log('selectorOutput', selectorOutput);
 
   return (
     <div>
