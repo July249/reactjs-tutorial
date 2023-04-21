@@ -11,6 +11,11 @@ export const todoState = atom<ITodo[]>({
   default: [],
 });
 
+export const categoryState = atom({
+  key: 'category',
+  default: 'TO_DO',
+});
+
 export const todoSelector = selector({
   key: 'todoSelector',
   get: ({ get }) => {
