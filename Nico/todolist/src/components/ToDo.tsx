@@ -10,12 +10,8 @@ function ToDo({ text, category, id }: ITodo) {
     } = event;
     setTodos((prev) => {
       const targetIndex = prev.findIndex((todo) => todo.id === id);
-      const oldTodo = prev[targetIndex];
-      const newTodo = { text, id, category: name };
-      console.log(oldTodo, newTodo);
-      console.log('replace the to do in the index', targetIndex, 'with', newTodo);
-
-      return prev;
+      const newTodo = { text, id, category: name as ITodo['category'] };
+      return [...prev.slice(0, targetIndex), newTodo, ...prev.slice(targetIndex + 1)];
     });
   };
   return (
