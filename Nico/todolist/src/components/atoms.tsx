@@ -20,10 +20,10 @@ export const todoSelector = selector({
   key: 'todoSelector',
   get: ({ get }) => {
     const todos = get(todoState);
-    return [
-      todos.filter((todo) => todo.category === 'TO_DO'),
-      todos.filter((todo) => todo.category === 'DOING'),
-      todos.filter((todo) => todo.category === 'DONE'),
-    ];
+    const category = get(categoryState) as ITodo['category'];
+
+    if (category === 'TO_DO') return todos.filter((todo) => todo.category === 'TO_DO');
+    if (category === 'DOING') return todos.filter((todo) => todo.category === 'DOING');
+    if (category === 'DONE') return todos.filter((todo) => todo.category === 'DONE');
   },
 });
